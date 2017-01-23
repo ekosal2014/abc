@@ -12,6 +12,13 @@ $(document).ready(function(){
 	});
 	
 	$('#btn-save').click(function(){
-		
+		$.ajax({
+			  type: "POST",
+			  url: '../user/menuAdd',
+			  data: {'menuName':'abc'},
+			  success: function(data){
+				  
+			  }
+			});
 	});
 });
