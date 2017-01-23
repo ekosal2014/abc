@@ -406,5 +406,13 @@ ul{
     border-color: #ccc;
 }
 
+.btn-remove{
+	position: absolute;
+	right: 20px;
+	top:5px;
+	z-index:9999;
+	cursor:pointer;
+	color:red;
+}
 
 

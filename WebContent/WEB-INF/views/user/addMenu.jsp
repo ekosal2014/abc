@@ -61,17 +61,22 @@
 							            <ol class="dd-list">
 							               <c:forEach items="${menu }" var="lvl1">
 							                   <c:if test="${lvl1.sts != '0' && lvl1.menuParents == '0'}">
-							                   		<li class="dd-item" data-id="1">
-									                    <div class="dd-handle"> ${lvl1.menuName }</div>		               
+							                   		<li class="dd-item" data-id="${lvl1.menuId }">
+									                    <div class="dd-handle"> ${lvl1.menuName } </div>	
+									                    <span class="btn-remove">remove</span>	               
 									                    <ol class="dd-list">
 										                <c:forEach items="${menu }" var="lvl2">
 										                  	<c:if test="${lvl2.sts != '0' && lvl2.menuParents == lvl1.menuId }">										              								                       
-											                        <li class="dd-item" data-id="5">
+											                        <li class="dd-item" data-id="${lvl2.menuId }">
 											                            <div class="dd-handle">${lvl2.menuName }</div>
+											                            <span class="btn-remove">remove</span>	
 											                            <ol class="dd-list">
 											                            	 <c:forEach items="${menu }" var="lvl3">
 										                  						<c:if test="${lvl3.sts != '0' && lvl3.menuParents == lvl2.menuId }">
-											                              			  <li class="dd-item" data-id="6"><div class="dd-handle">${lvl3.menuName }</div></li>									                              
+											                              			  <li class="dd-item" data-id="${lvl3.menuId }">
+												                              			  <div class="dd-handle">${lvl3.menuName }</div>
+												                              			  <span class="btn-remove">remove</span>	
+												                              		 </li>									                              
 												                            	</c:if>
 											                				</c:forEach>
 											                            </ol>

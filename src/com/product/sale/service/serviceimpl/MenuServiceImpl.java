@@ -36,13 +36,13 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public Boolean MenuDelete(int id, HttpServletRequest request) {
+	public Message MenuDelete(int id, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		return menuDao.MenuDelete(id, request);
 	}
 
 	@Override
-	public Boolean MenuRemove(int id, HttpServletRequest request) {
+	public Message MenuRemove(int id, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		return menuDao.MenuRemove(id, request);
 	}

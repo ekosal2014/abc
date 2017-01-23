@@ -12,8 +12,8 @@ import com.product.sale.model.Users;
 public interface MenuDao {
 	public List<Menu> ListMenu(Users user);
 	public Message MenuAdd(Menu menu,HttpServletRequest request);
-	public Boolean MenuDelete(int id,HttpServletRequest request);
-	public Boolean MenuRemove(int id,HttpServletRequest request);
+	public Message MenuDelete(int id,HttpServletRequest request);
+	public Message MenuRemove(int id,HttpServletRequest request);
 	public Boolean MenuUpdate(ArrayList<Menu> list,HttpServletRequest request);
 	public Boolean MenuUpdateName(Menu menu,HttpServletRequest request);
 }

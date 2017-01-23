@@ -59,7 +59,7 @@ public class MenuDaoImpl implements MenuDao{
 											.add(Restrictions.eq("user", user)).uniqueResult();
 			
 			if (menus != null){
-				msg.setCode("0001");
+				msg.setCode("0000");
 				msg.setMsg("Menu Item Duplicated.");
 				return msg;
 			}				
@@ -81,9 +81,10 @@ public class MenuDaoImpl implements MenuDao{
 	}
 
 	@Override
-	public Boolean MenuDelete(int id, HttpServletRequest request) {
+	public Message MenuDelete(int id, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		Session session = null;
+		Message msg = new Message();
 		try{
 			session = sessionFactory.openSession();
 			session.getTransaction().begin();
@@ -94,7 +95,9 @@ public class MenuDaoImpl implements MenuDao{
 			query.setParameter("uid", user.getuId());
 			if (query.executeUpdate()>0){
 				session.getTransaction().commit();
-				return true;
+				msg.setCode("0000");
+				msg.setMsg("Remove Item Completed");
+				return msg;
 			}
 			
 		}catch(Exception e){
@@ -102,13 +105,16 @@ public class MenuDaoImpl implements MenuDao{
 		}finally{
 			session.close();
 		}
-		return false;
+		msg.setCode("9999");
+		msg.setMsg("Remove Item Failed");
+		return msg;
 	}
 
 	@Override
-	public Boolean MenuRemove(int id, HttpServletRequest request) {
+	public Message MenuRemove(int id, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		Session session = null;
+		Message msg = new Message();
 		try{
 			session = sessionFactory.openSession();
 			session.getTransaction().begin();
@@ -118,11 +124,15 @@ public class MenuDaoImpl implements MenuDao{
 				session.saveOrUpdate(menudb);
 			}
 			session.getTransaction().commit();
-			return true;
+			msg.setCode("0000");
+			msg.setMsg("Remove Item Completed");
+			return msg;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return false;
+		msg.setCode("9999");
+		msg.setMsg("Remove Item Failed");
+		return msg;
 	}
 
 	@Override
