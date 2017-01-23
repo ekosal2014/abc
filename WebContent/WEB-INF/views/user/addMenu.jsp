@@ -59,34 +59,31 @@
 					     		<div style="padding:10px;">
 					     			 <div class="dd" id="nestable">
 							            <ol class="dd-list">
-							                <li class="dd-item" data-id="1">
-							                    <div class="dd-handle">Home</div>
-									                </li>
-									                <li class="dd-item" data-id="2">
-									                    <div class="dd-handle">Item 2</div>
+							               <c:forEach items="${menu }" var="lvl1">
+							                   <c:if test="${lvl1.sts != '0' && lvl1.menuParents == '0'}">
+							                   		<li class="dd-item" data-id="1">
+									                    <div class="dd-handle"> ${lvl1.menuName }</div>		               
 									                    <ol class="dd-list">
-									                        <li class="dd-item" data-id="3"><div class="dd-handle">Item 3</div></li>
-									                        <li class="dd-item" data-id="4"><div class="dd-handle">Item 4</div></li>
-									                        <li class="dd-item" data-id="5">
-									                            <div class="dd-handle">Item 5</div>
-									                            <ol class="dd-list">
-									                                <li class="dd-item" data-id="6"><div class="dd-handle">Item 6</div></li>
-									                                <li class="dd-item" data-id="7"><div class="dd-handle">Item 7</div></li>
-									                                <li class="dd-item" data-id="8"><div class="dd-handle">Item 8</div></li>
-									                            </ol>
-									                        </li>
-									                        <li class="dd-item" data-id="9"><div class="dd-handle">Item 9</div></li>
-									                        <li class="dd-item" data-id="10"><div class="dd-handle">Item 10</div></li>
-									                    </ol>
+										                <c:forEach items="${menu }" var="lvl2">
+										                  	<c:if test="${lvl2.sts != '0' && lvl2.menuParents == lvl1.menuId }">										              								                       
+											                        <li class="dd-item" data-id="5">
+											                            <div class="dd-handle">${lvl2.menuName }</div>
+											                            <ol class="dd-list">
+											                            	 <c:forEach items="${menu }" var="lvl3">
+										                  						<c:if test="${lvl3.sts != '0' && lvl3.menuParents == lvl2.menuId }">
+											                              			  <li class="dd-item" data-id="6"><div class="dd-handle">${lvl3.menuName }</div></li>									                              
+												                            	</c:if>
+											                				</c:forEach>
+											                            </ol>
+											                        </li>							                      
+										                  	</c:if>
+										                </c:forEach>
+										                </ol>
 									                </li>
-									                <li class="dd-item" data-id="11">
-									                    <div class="dd-handle">Contact Us</div>
-									                </li>
-									                <li class="dd-item" data-id="12">
-									                    <div class="dd-handle">About Us</div>
-									                </li>
-									            </ol>
-									        </div>
+								                   </c:if>							               		   
+								               </c:forEach>									               
+								            </ol>
+								        </div>
 					     		</div>
 					     		<div class="category-title"> Name </div>
 					     	</div>
@@ -113,16 +110,16 @@
 		        group: 1
 		    });
 		 $('#nestable-menu').on('click', function(e)
-				    {
-				        var target = $(e.target),
-				            action = target.data('action');
-				        if (action === 'expand-all') {
-				            $('.dd').nestable('expandAll');
-				        }
-				        if (action === 'collapse-all') {
-				            $('.dd').nestable('collapseAll');
-				        }
-				    });
+	     {
+	        var target = $(e.target),
+	            action = target.data('action');
+	        if (action === 'expand-all') {
+	            $('.dd').nestable('expandAll');
+	        }
+	        if (action === 'collapse-all') {
+	            $('.dd').nestable('collapseAll');
+	        }
+	    });
 	
 	});
 
