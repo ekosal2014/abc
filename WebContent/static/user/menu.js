@@ -8,7 +8,7 @@ $(document).ready(function(){
 	});
 	
 	$('#btn-add-item').click(function(){
-		
+		sdfg
 	});
 	
 	$('#btn-save').click(function(){
