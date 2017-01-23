@@ -12,8 +12,6 @@ $(document).ready(function(){
 	});
 	
 	$('#btn-save').click(function(){
-		$.ajax(function(){
-			
-		});
+		
 	});
 });
