@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,7 +26,7 @@
 						<div class="form-group">
 							<label class="col-sm-1 control-label">Category Name : </label>
 							<div class="col-sm-5 col-xs-12">
-								<input type="text" class="form-control col-xs-12" id="" placeholder="Example placeholder..."/>
+								<input type="text" class="form-control col-xs-12" id="txt-menu" placeholder="Example placeholder..."/>
 							</div>
 							<a href="javascript:" style="margin-left:15px;" class="btn btn-green btn-success" id="btn-save">Save</a>
 						</div>
@@ -39,9 +40,11 @@
 					     		<div class="category-title"> Name </div>
 					     		<div style="padding:10px;">
 					     			<ul>
-					     				<li> <input type="checkbox">A</li>
-					     				<li> <input type="checkbox">B</li>
-					     				<li> <input type="checkbox">C</li>
+					     			   <c:forEach items="${menu }" var="item">
+					     			        <c:if test="${item.sts == '0' }">
+					     			        	<li><input type="checkbox">${item.menuName }</li>
+					     			        </c:if>
+					     			   </c:forEach>					     				
 					     			</ul>
 					     		</div>
 					     		<div class="category-title" style="text-align:right; padding-right:10px;" >

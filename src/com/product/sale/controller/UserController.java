@@ -1,6 +1,7 @@
 package com.product.sale.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.RequestWrapper;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.ObjectWriter;
 import org.hibernate.type.descriptor.java.MutabilityPlan;
 import org.springframework.aop.framework.adapter.ThrowsAdviceInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -230,19 +235,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/menuAdd", method = RequestMethod.POST)
-	public @ResponseBody String userMenuAdd(HttpServletRequest request,HttpSession session,@ModelAttribute Menu menu){	
+	public @ResponseBody String userMenuAdd(HttpServletRequest request,HttpSession session,@ModelAttribute Menu menu) throws JsonGenerationException, JsonMappingException, IOException{	
 		if (request.getSession().getAttribute("user") == null){
 			return "redirect:/login?logout";
 		}
 		
 		Users user = (Users) request.getSession().getAttribute("user");
 		menu.setUser(user);		
-		System.out.println("Hello === "+menu);
-		if (menuService.MenuAdd(menu, request)){
-			/*categorySerivce.ListCategory(request);*/
-			return "true";
-		}
-		return "false";
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = ow.writeValueAsString(menuService.MenuAdd(menu, request));
+		return json;
+		
 	}
 	
 	@RequestMapping(value="/listcategory", method = RequestMethod.POST)

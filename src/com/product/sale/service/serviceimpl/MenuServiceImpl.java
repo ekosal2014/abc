@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.product.sale.dao.dao.MenuDao;
+import com.product.sale.forms.Message;
 import com.product.sale.model.Menu;
 import com.product.sale.model.Users;
 import com.product.sale.service.service.MenuService;
@@ -29,7 +30,7 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public Boolean MenuAdd(Menu menu, HttpServletRequest request) {
+	public Message MenuAdd(Menu menu, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		return menuDao.MenuAdd(menu, request);
 	}

@@ -15,9 +15,15 @@ $(document).ready(function(){
 		$.ajax({
 			  type: "POST",
 			  url: '../user/menuAdd',
-			  data: {'menuName':'abc'},
+			  data: {'menuName':$('#txt-menu').val()},
 			  success: function(data){
-				  
+				  var msg = jQuery.parseJSON(data)
+				  alert(msg.msg);
+				  window.location.href = "../user/addMenu";
+			  },error:function(data){
+				  var msg = jQuery.parseJSON(data)
+				  alert(msg.msg);
+				  window.location.href = "../user/addMenu";
 			  }
 			});
 	});

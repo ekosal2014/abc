@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.product.sale.dao.dao.MenuDao;
+import com.product.sale.forms.Message;
 import com.product.sale.model.Menu;
 import com.product.sale.model.Users;
 
@@ -45,9 +46,10 @@ public class MenuDaoImpl implements MenuDao{
 	}
 
 	@Override
-	public Boolean MenuAdd(Menu menu, HttpServletRequest request) {
+	public Message MenuAdd(Menu menu, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		Session session = null;
+		Message msg = new Message();
 		try{			
 			session = sessionFactory.openSession();
 			session.getTransaction().begin();
@@ -57,18 +59,24 @@ public class MenuDaoImpl implements MenuDao{
 											.add(Restrictions.eq("user", user)).uniqueResult();
 			
 			if (menus != null){
-				return false;
+				msg.setCode("0001");
+				msg.setMsg("Menu Item Duplicated.");
+				return msg;
 			}				
 			menu.setSts("0");
 			menu.setMenuParents(0);
 			session.save(menu);		
 			session.getTransaction().commit();
-     		return true;
+			msg.setCode("0000");
+			msg.setMsg("Menu Item Insert Completed");
+     		return msg;
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
 			//session.close();
 		}
+		msg.setCode("9999");
+		msg.setMsg("Menu Item Insert failed");
 		return null;
 	}
 
