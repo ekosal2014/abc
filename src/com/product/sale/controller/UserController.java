@@ -274,8 +274,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/update-menu", method = RequestMethod.POST/*,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE*/)
-	public @ResponseBody Boolean userUdateCategory(@RequestBody ArrayList<Menu> list,HttpServletRequest request){
-		return menuService.MenuUpdate(list, request);
+	public @ResponseBody String userUdateCategory(@RequestBody ArrayList<Menu> list,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException{
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = ow.writeValueAsString(menuService.MenuUpdate(list, request));
+		return json;
 	}
 	
 	@RequestMapping(value="/name-menu", method = RequestMethod.POST/*,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE*/)

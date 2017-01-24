@@ -14,6 +14,6 @@ public interface MenuDao {
 	public Message MenuAdd(Menu menu,HttpServletRequest request);
 	public Message MenuDelete(int id,HttpServletRequest request);
 	public Message MenuRemove(int id,HttpServletRequest request);
-	public Boolean MenuUpdate(ArrayList<Menu> list,HttpServletRequest request);
+	public Message MenuUpdate(ArrayList<Menu> list,HttpServletRequest request);
 	public Boolean MenuUpdateName(Menu menu,HttpServletRequest request);
 }

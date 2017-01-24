@@ -9,7 +9,7 @@ $(document).ready(function(){
 	
 	$('#btn-add-item').click(function(){
 		$.each($('.category-control ul li').find('input[type="checkbox"]:checked'),function(k,v){
-			var html = '<li class="dd-item" data-id="">'+
+			var html = '<li class="dd-item" data-id="'+$(this).parent('li').attr('data-id')+'">'+
                        '<div class="dd-handle">'+$(this).parent('li').text()+'</div>'+
                        '<span class="btn-remove">remove</span>'+
                        '</li>';
@@ -19,9 +19,7 @@ $(document).ready(function(){
 	});
 	
 	$('#nestable .btn-remove').click(function(){
-		alert($(this).parent('li').attr('data-id'));
-		
-		
+		alert($(this).parent('li').attr('data-id'));		
 		$.ajax({
 			  type: "GET",
 			  url: '../user/remove-menu',
@@ -59,18 +57,38 @@ $(document).ready(function(){
 		var list = [];
 		$.each($('#nestable>.dd-list>.dd-item'), function(){
 			console.log("lvl1="+$(this).attr('data-id'));
+			
 			$.each($(this).find('.dd-list:eq(0)>.dd-item'), function(){
 				console.log("lvl2="+$(this).attr('data-id'));
+				var lvl3 = [];
 				$.each($(this).find('.dd-list>.dd-item'), function(){
 					console.log("lvl3="+$(this).attr('data-id'));
+					var lvl3item = {
+									   'menuId':$(this).attr('data-id'),
+									   'menuParents':$(this).attr('parent-id')
+									}
+					list.push(lvl3item);
 				});
+				var lvl2item = {
+						'menuId':$(this).attr('data-id'),
+						'menuParents':$(this).attr('parent-id')
+				}
+			
+				list.push(lvl2item);
 			});
+			var lvl1= {
+					'menuId':$(this).attr('data-id'),
+					'menuParents':$(this).attr('parent-id')
+			}
+			list.push(lvl1);
 		});
-		
-		/*$.ajax({
+		console.log(list);
+		$.ajax({
 			  type: "POST",
 			  url: '../user/update-menu',
-			  data: {'menuName':$('#txt-menu').val()},
+			  data: JSON.stringify(list),
+			  contentType : 'application/json; charset=utf-8',
+		      dataType : 'json',
 			  success: function(data){
 				  var msg = jQuery.parseJSON(data)
 				  alert(msg.msg);
@@ -80,6 +98,6 @@ $(document).ready(function(){
 				  alert(msg.msg);
 				  window.location.href = "../user/addMenu";
 			  }
-			});*/
+			});
 	});
 });

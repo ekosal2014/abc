@@ -42,7 +42,7 @@
 					     			<ul>
 					     			   <c:forEach items="${menu }" var="item">
 					     			        <c:if test="${item.sts == '0' }">
-					     			        	<li><input type="checkbox">${item.menuName }</li>
+					     			        	<li data-id="${item.menuId }"><input type="checkbox">${item.menuName }</li>
 					     			        </c:if>
 					     			   </c:forEach>					     				
 					     			</ul>
@@ -61,19 +61,19 @@
 							            <ol class="dd-list">
 							               <c:forEach items="${menu }" var="lvl1">
 							                   <c:if test="${lvl1.sts != '0' && lvl1.menuParents == '0'}">
-							                   		<li class="dd-item" data-id="${lvl1.menuId }">
+							                   		<li class="dd-item" data-id="${lvl1.menuId }" parent-id="0">
 									                    <div class="dd-handle"> ${lvl1.menuName } </div>	
 									                    <span class="btn-remove">remove</span>	               
 									                    <ol class="dd-list">
 										                <c:forEach items="${menu }" var="lvl2">
 										                  	<c:if test="${lvl2.sts != '0' && lvl2.menuParents == lvl1.menuId }">										              								                       
-											                        <li class="dd-item" data-id="${lvl2.menuId }">
+											                        <li class="dd-item" data-id="${lvl2.menuId }" parent-id="${lvl1.menuParents }">
 											                            <div class="dd-handle">${lvl2.menuName }</div>
 											                            <span class="btn-remove">remove</span>	
 											                            <ol class="dd-list">
 											                            	 <c:forEach items="${menu }" var="lvl3">
 										                  						<c:if test="${lvl3.sts != '0' && lvl3.menuParents == lvl2.menuId }">
-											                              			  <li class="dd-item" data-id="${lvl3.menuId }">
+											                              			  <li class="dd-item" data-id="${lvl3.menuId }" parent-id="${lvl2.menuParents }">
 												                              			  <div class="dd-handle">${lvl3.menuName }</div>
 												                              			  <span class="btn-remove">remove</span>	
 												                              		 </li>									                              
