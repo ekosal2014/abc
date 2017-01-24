@@ -11,6 +11,7 @@ $(document).ready(function(){
 		$.each($('.category-control ul li').find('input[type="checkbox"]:checked'),function(k,v){
 			var html = '<li class="dd-item" data-id="1">'+
                        '<div class="dd-handle">'+$(this).parent('li').text()+'</div>'+
+                       '<span class="btn-remove">remove</span>'+
                        '</li>';
 			$(this).parent('li').remove();
 			$('#nestable>.dd-list').append(html);
@@ -19,6 +20,8 @@ $(document).ready(function(){
 	
 	$('#nestable .btn-remove').click(function(){
 		alert($(this).parent('li').attr('data-id'));
+		
+		
 		$.ajax({
 			  type: "GET",
 			  url: '../user/remove-menu',

@@ -90,7 +90,9 @@
 								            </ol>
 								        </div>
 					     		</div>
-					     		<div class="category-title"> Name </div>
+					     		<div class="category-title"> 
+					     			<a href="javascript:" id="btn-add-item" class="btn btn-default btn-success" style="padding: 3px 5px !important;"> Save </a>
+					     		</div>
 					     	</div>
 					     </div>
 					     <div style="clear: both;"></div>

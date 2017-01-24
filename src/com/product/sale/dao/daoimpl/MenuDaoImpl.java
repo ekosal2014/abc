@@ -118,10 +118,17 @@ public class MenuDaoImpl implements MenuDao{
 		try{
 			session = sessionFactory.openSession();
 			session.getTransaction().begin();
-			Menu menudb = (Menu)session.get(Menu.class, id);
-			if (menudb != null){
-				menudb.setSts("0");
-				session.saveOrUpdate(menudb);
+			Users user = (Users) request.getSession().getAttribute("user");
+			Query query = session.createQuery("UPDATE Menu SET sts=:sts  WHERE (menuId = :cid or menuParents = :pid) and U_ID = :uid");
+			query.setParameter("sts", "0");
+			query.setParameter("cid", id);
+			query.setParameter("pid",id);
+			query.setParameter("uid", user.getuId());
+			if (query.executeUpdate()>0){
+				session.getTransaction().commit();
+				msg.setCode("0000");
+				msg.setMsg("Remove Item Completed");
+				return msg;
 			}
 			session.getTransaction().commit();
 			msg.setCode("0000");
