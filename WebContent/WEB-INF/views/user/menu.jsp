@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,21 +30,37 @@
 	                        </tr>
 	                      </thead>
 	                      <tbody>
-	                        <tr>
-	                          <th scope="row" style="width:10%">1</th>
-	                          <td style="width:70%">Mark</td>
-	                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
-	                        </tr>
-	                        <tr>
-	                          <th scope="row" style="width:10%">2</th>
-	                          <td style="width:70%">Jacob</td>
-	                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
-	                        </tr>
-	                        <tr>
-	                          <th scope="row" style="width:10%">3</th>
-	                          <td style="width:70%">Larry</td>
-	                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
-	                        </tr>
+	                        <c:set var="count" value="0" scope="page" />	                      
+	                        <c:forEach items="${menu }" var="lvl1">
+			                   <c:if test="${lvl1.sts != '0' && lvl1.menuParents == '0'}">
+		                   			 <c:set var="count" value="${count + 1}" scope="page"/>
+			                   		<tr>
+			                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
+			                          <td style="width:70%">${lvl1.menuName }</td>
+			                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
+			                        </tr>
+					                <c:forEach items="${menu }" var="lvl2">
+					                  	<c:if test="${lvl2.sts != '0' && lvl2.menuParents == lvl1.menuId }">	
+					                  	   <c:set var="count" value="${count + 1}" scope="page"/> 									              								                       
+			                    		   <tr>
+					                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
+					                          <td style="width:70%"> - ${lvl2.menuName }</td>
+					                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
+					                        </tr>
+			                            	 <c:forEach items="${menu }" var="lvl3">
+		                  						<c:if test="${lvl3.sts != '0' && lvl3.menuParents == lvl2.menuId }">
+		                  						       <c:set var="count" value="${count + 1}" scope="page"/>
+			                              			  <tr>
+								                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
+								                          <td style="width:70%"> - - ${lvl3.menuName }</td>
+								                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
+								                        </tr>
+								                </c:if>
+			                				</c:forEach>						                      							                      
+					                  	</c:if>
+					                </c:forEach>					          
+				                   </c:if>							               		   
+				               </c:forEach>		                        
 	                      </tbody>
 	                    </table>	
 	                  </div>

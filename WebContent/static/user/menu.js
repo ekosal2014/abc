@@ -65,24 +65,24 @@ $(document).ready(function(){
 					console.log("lvl3="+$(this).attr('data-id'));
 					var lvl3item = {
 									   'menuId':$(this).attr('data-id'),
-									   'menuParents':$(this).attr('parent-id')
+									   'menuParents':$(this).parent('ol').parent('li').attr('data-id')
 									}
 					list.push(lvl3item);
 				});
 				var lvl2item = {
 						'menuId':$(this).attr('data-id'),
-						'menuParents':$(this).attr('parent-id')
+						'menuParents':$(this).parent('ol').parent('li').attr('data-id')
 				}
 			
 				list.push(lvl2item);
 			});
 			var lvl1= {
 					'menuId':$(this).attr('data-id'),
-					'menuParents':$(this).attr('parent-id')
+					'menuParents':'0'
 			}
 			list.push(lvl1);
 		});
-		console.log(list);
+		
 		$.ajax({
 			  type: "POST",
 			  url: '../user/update-menu',
@@ -90,12 +90,11 @@ $(document).ready(function(){
 			  contentType : 'application/json; charset=utf-8',
 		      dataType : 'json',
 			  success: function(data){
-				  var msg = jQuery.parseJSON(data)
-				  alert(msg.msg);
+				  console.log(data);
+				  alert(data.msg);
 				  window.location.href = "../user/addMenu";
 			  },error:function(data){
-				  var msg = jQuery.parseJSON(data)
-				  alert(msg.msg);
+				  alert(data.msg);
 				  window.location.href = "../user/addMenu";
 			  }
 			});
