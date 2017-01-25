@@ -96,7 +96,7 @@ public class MenuDaoImpl implements MenuDao{
 			if (query.executeUpdate()>0){
 				session.getTransaction().commit();
 				msg.setCode("0000");
-				msg.setMsg("Remove Item Completed");
+				msg.setMsg("Delete Item Completed");
 				return msg;
 			}
 			
@@ -106,7 +106,7 @@ public class MenuDaoImpl implements MenuDao{
 			session.close();
 		}
 		msg.setCode("9999");
-		msg.setMsg("Remove Item Failed");
+		msg.setMsg("Delete Item Failed");
 		return msg;
 	}
 

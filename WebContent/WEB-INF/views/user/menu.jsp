@@ -21,7 +21,7 @@
 				</div>
 				<div id="content">
 					<div class="x_content">
-	                    <table class="table">
+	                    <table class="table" id="tbl-result">
 	                      <thead>
 	                        <tr>
 	                          <th>#</th>
@@ -36,24 +36,24 @@
 		                   			 <c:set var="count" value="${count + 1}" scope="page"/>
 			                   		<tr>
 			                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
-			                          <td style="width:70%">${lvl1.menuName }</td>
-			                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
+			                          <td style="width:70%">${lvl1.menuName }<input type="hidden" value="${lvl1.menuName }" class="txt-name"/></td>
+			                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="${lvl1.menuId }">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="${lvl1.menuId }">Delete</a></td>
 			                        </tr>
 					                <c:forEach items="${menu }" var="lvl2">
 					                  	<c:if test="${lvl2.sts != '0' && lvl2.menuParents == lvl1.menuId }">	
 					                  	   <c:set var="count" value="${count + 1}" scope="page"/> 									              								                       
 			                    		   <tr>
 					                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
-					                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp ${lvl2.menuName }</td>
-					                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
+					                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp ${lvl2.menuName } <input type="hidden" value="${lvl1.menuName }" class="txt-name"/></td>
+					                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="${lvl2.menuId }">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="${lvl2.menuId }">Delete</a></td>
 					                        </tr>
 			                            	 <c:forEach items="${menu }" var="lvl3">
 		                  						<c:if test="${lvl3.sts != '0' && lvl3.menuParents == lvl2.menuId }">
 		                  						       <c:set var="count" value="${count + 1}" scope="page"/>
 			                              			  <tr>
 								                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
-								                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp __ &nbsp&nbsp ${lvl3.menuName }</td>
-								                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
+								                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp __ &nbsp&nbsp ${lvl3.menuName } <input type="hidden" value="${lvl1.menuName }" class="txt-name"/> </td>
+								                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="${lvl3.menuId }">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="${lvl3.menuId }">Delete</a></td>
 								                        </tr>
 								                </c:if>
 			                				</c:forEach>						                      							                      
@@ -74,5 +74,36 @@
 	
 	<div style="clear: both;"></div>
 </div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" style="width:500px;">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h3>Modal Header</h3>
+    </div>
+    <div class="modal-body">
+      <p style="position: relative;">
+      		<div class="col-sm-5 col-xs-12">
+				<input type="text" class="form-control col-xs-12" id="txt-menu-edit" placeholder="Example placeholder..."/>
+				<input type="hidden" class="txt-name-id"/>
+			</div>
+			<div style="clear: both;"></div>
+      </p>
+      <p style="padding-left: 10px;">
+      	 <a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="${lvl3.menuId }">Save</a> 
+      	 <a href="javascript:" class="btn btn-small btn-red" id="btn_cancel" data-id="${lvl3.menuId }">Cancel</a>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath }/static/user/menu.js"></script>
 </body>
 </html>

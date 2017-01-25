@@ -99,4 +99,36 @@ $(document).ready(function(){
 			  }
 			});
 	});
+	
+	$('#tbl-result tbody tr td a.btn-delete').click(function(){
+		var frm = window.confirm("Do You want to delete this Item");
+		if (frm == true){
+			$.ajax({
+				  type: "GET",
+				  url: '../user/delete-menu',
+				  data: {'id':$(this).attr('data-id')},
+				  success: function(data){
+					  console.log(data);
+					  var msg = jQuery.parseJSON(data)
+					  alert(msg.msg);
+					  window.location.href = "../user/menu";
+				  },error:function(data){
+					  var msg = jQuery.parseJSON(data)
+					  alert(msg.msg);
+					  window.location.href = "../user/menu";
+				  }
+			});
+		}
+		
+	});
+	
+	$('#tbl-result tbody tr td a.btn-edit').click(function(){
+		$('#myModal').css('display','block');
+		$('#txt-menu-edit').val($(this).parents('tr').find('.txt-name').val());
+		$('#txt-menu-id').val($(this).attr('data-id'));
+	});
+	
+	$('.close,#btn_cancel').click(function(){
+		$('#myModal').css('display','none');
+	});
 });

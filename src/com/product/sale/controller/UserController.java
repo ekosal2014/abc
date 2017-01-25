@@ -258,11 +258,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/delete-menu", method = RequestMethod.GET)
-	public @ResponseBody String userCategoryDelete(@RequestParam("id") int id,HttpServletRequest request){
+	public @ResponseBody String userCategoryDelete(@RequestParam("id") int id,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException{
 		if (request.getSession().getAttribute("user") == null){
 			return "redirect:/login?logout";
 		}
-		return menuService.MenuDelete(id, request).toString();
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = ow.writeValueAsString(menuService.MenuDelete(id, request));
+		return json;
 	}
 	
 	@RequestMapping(value="/remove-menu", method = RequestMethod.GET)
