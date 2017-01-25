@@ -125,10 +125,31 @@ $(document).ready(function(){
 	$('#tbl-result tbody tr td a.btn-edit').click(function(){
 		$('#myModal').css('display','block');
 		$('#txt-menu-edit').val($(this).parents('tr').find('.txt-name').val());
-		$('#txt-menu-id').val($(this).attr('data-id'));
+		$('#txt-name-id').val($(this).attr('data-id'));
 	});
 	
 	$('.close,#btn_cancel').click(function(){
 		$('#myModal').css('display','none');
+	});
+	
+	$('#btn-edit').click(function(){
+		var dat = {
+				'menuId'  : $('#txt-name-id').val(),
+				'menuName': $('#txt-menu-edit').val()
+		}
+		$.ajax({
+			  type: "POST",
+			  url: '../user/name-menu',
+			  data: JSON.stringify(dat),
+			  contentType : 'application/json; charset=utf-8',
+		      dataType : 'json',
+			  success: function(data){
+				  alert(data.msg);
+				  window.location.href = "../user/menu";
+			  },error:function(data){
+				  alert(data.msg);
+				  window.location.href = "../user/menu";
+			  }
+		});
 	});
 });

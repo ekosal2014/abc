@@ -15,5 +15,5 @@ public interface MenuService {
 	public Message MenuDelete(int id,HttpServletRequest request);
 	public Message MenuRemove(int id,HttpServletRequest request);
 	public Message MenuUpdate(ArrayList<Menu> list,HttpServletRequest request);
-	public Boolean MenuUpdateName(Menu menu,HttpServletRequest request);
+	public Message MenuUpdateName(Menu menu,HttpServletRequest request);
 }

@@ -171,9 +171,10 @@ public class MenuDaoImpl implements MenuDao{
 	}
 
 	@Override
-	public Boolean MenuUpdateName(Menu menu, HttpServletRequest request) {
+	public Message MenuUpdateName(Menu menu, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		Session session = null;
+		Message msg = new Message();
 		try{
 			session = sessionFactory.openSession();
 			session.getTransaction().begin();
@@ -185,19 +186,27 @@ public class MenuDaoImpl implements MenuDao{
 						.add(Restrictions.eq("user", user)).uniqueResult();
 
 				if (menus != null){
-				return false;
+					msg.setCode("0000");
+					msg.setMsg("Item Name Duplicated!");
+					return msg;
 				}				
 				menudb.setMenuName(menu.getMenuName().trim());
 				session.saveOrUpdate(menudb);
 			}else{
-				return false;
+				msg.setCode("0000");
+				msg.setMsg("Update Invalid!");
+				return msg;
 			}
 			session.getTransaction().commit();
-			return true;
+			msg.setCode("0000");
+			msg.setMsg("Item Name Update Completed!");
+			return msg;
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return false;
+		msg.setCode("0000");
+		msg.setMsg("Update Invalid!");
+		return msg;
 	}
 
 }

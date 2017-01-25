@@ -283,11 +283,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/name-menu", method = RequestMethod.POST/*,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE*/)
-	public @ResponseBody String userUdateCategoryName(@RequestBody Menu menu,HttpServletRequest request){
+	public @ResponseBody String userUdateCategoryName(@RequestBody Menu menu,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException{
 		if (request.getSession().getAttribute("user") == null){
 			return "redirect:/login?logout";
 		}
-		return menuService.MenuUpdateName(menu, request).toString();
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = ow.writeValueAsString(menuService.MenuUpdateName(menu, request));
+		return json;
 	}
 	
 	@RequestMapping(value="/layout", method = RequestMethod.GET)

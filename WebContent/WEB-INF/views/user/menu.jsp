@@ -44,7 +44,7 @@
 					                  	   <c:set var="count" value="${count + 1}" scope="page"/> 									              								                       
 			                    		   <tr>
 					                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
-					                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp ${lvl2.menuName } <input type="hidden" value="${lvl1.menuName }" class="txt-name"/></td>
+					                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp ${lvl2.menuName } <input type="hidden" value="${lvl2.menuName }" class="txt-name"/></td>
 					                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="${lvl2.menuId }">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="${lvl2.menuId }">Delete</a></td>
 					                        </tr>
 			                            	 <c:forEach items="${menu }" var="lvl3">
@@ -52,7 +52,7 @@
 		                  						       <c:set var="count" value="${count + 1}" scope="page"/>
 			                              			  <tr>
 								                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
-								                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp __ &nbsp&nbsp ${lvl3.menuName } <input type="hidden" value="${lvl1.menuName }" class="txt-name"/> </td>
+								                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp __ &nbsp&nbsp ${lvl3.menuName } <input type="hidden" value="${lvl3.menuName }" class="txt-name"/> </td>
 								                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="${lvl3.menuId }">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="${lvl3.menuId }">Delete</a></td>
 								                        </tr>
 								                </c:if>
@@ -87,12 +87,12 @@
       <p style="position: relative;">
       		<div class="col-sm-5 col-xs-12">
 				<input type="text" class="form-control col-xs-12" id="txt-menu-edit" placeholder="Example placeholder..."/>
-				<input type="hidden" class="txt-name-id"/>
+				<input type="hidden" id="txt-name-id"/>
 			</div>
 			<div style="clear: both;"></div>
       </p>
       <p style="padding-left: 10px;">
-      	 <a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="${lvl3.menuId }">Save</a> 
+      	 <a href="javascript:" class="btn btn-small btn-yellow" id="btn-edit">Save</a> 
       	 <a href="javascript:" class="btn btn-small btn-red" id="btn_cancel" data-id="${lvl3.menuId }">Cancel</a>
       </p>
     </div>

@@ -54,7 +54,7 @@ public class MenuServiceImpl implements MenuService{
 	}
 
 	@Override
-	public Boolean MenuUpdateName(Menu menu, HttpServletRequest request) {
+	public Message MenuUpdateName(Menu menu, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		return menuDao.MenuUpdateName(menu, request);
 	}
