@@ -44,7 +44,7 @@
 					                  	   <c:set var="count" value="${count + 1}" scope="page"/> 									              								                       
 			                    		   <tr>
 					                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
-					                          <td style="width:70%"> - ${lvl2.menuName }</td>
+					                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp ${lvl2.menuName }</td>
 					                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
 					                        </tr>
 			                            	 <c:forEach items="${menu }" var="lvl3">
@@ -52,7 +52,7 @@
 		                  						       <c:set var="count" value="${count + 1}" scope="page"/>
 			                              			  <tr>
 								                          <th scope="row" style="width:10%"><c:out value="${count}"></c:out></th>
-								                          <td style="width:70%"> - - ${lvl3.menuName }</td>
+								                          <td style="width:70%">&nbsp&nbsp __ &nbsp&nbsp __ &nbsp&nbsp ${lvl3.menuName }</td>
 								                          <td><a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | <a href="javascript:" class="btn btn-small btn-red">Delete</a></td>
 								                        </tr>
 								                </c:if>
