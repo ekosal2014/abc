@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath }/static/vendor/js/moment.js"></script>
 <script src="${pageContext.request.contextPath }/static/vendor/js/command.js"></script>
 </head>
 <body>
@@ -82,22 +83,37 @@
 	                  </div>
 	                  <div style="text-align:right;">
 	                  		<ul class="pagination modal-4">
-							  <li><a href="#" class="prev">
-							    <i class="fa fa-chevron-left"></i>
-							      Previous
-							    </a>
-							  </li>
-							  <li><a href="#">1</a></li>
-							  <li> <a href="#">2</a></li>
-							  <li> <a href="#">...</a></li>
-							  <li> <a href="#">3</a></li>
-							  <li> <a href="#">4</a></li>
-							  <li> <a href="#" class="active">5</a></li>
-							  <li> <a href="#">...</a></li>
-							  <li> <a href="#">7</a></li>
-							  <li><a href="#" class="next"> Next 
-							    <i class="fa fa-chevron-right"></i>
-							  </a></li>
+	                  		
+	                  		      <c:if test="${pagination.totalPage > 0 }">
+	                  		            <c:if test="${pagination.currentPage == 1 }">
+	                  		            	 <c:set var="dis" value="disable" scope="page" />	
+	                  		            </c:if>
+	                  		      		 <li><a href="#" class="prev  ${dis }">
+										    <i class="fa fa-chevron-left"></i>
+										      Previous
+										    </a>
+										  </li>
+										  <c:forEach begin="${pagination.currentPage }" end="${pagination.totalPage }" step="i">
+										  	<c:if test="${pagination.currentPage == i}">
+										  		<li><a href="#" class="active">1</a></li>
+										  	</c:if>										  	
+										  </c:forEach>
+										  
+										 <!--  <li> <a href="#">2</a></li>
+										  <li> <a href="#">...</a></li>
+										  <li> <a href="#">3</a></li>
+										  <li> <a href="#">4</a></li>
+										  <li> <a href="#" class="active">5</a></li>
+										  <li> <a href="#">...</a></li>
+										  <li> <a href="#">7</a></li> -->
+										  <c:if test="${pagination.currentPage >= pagination.totalPage }">
+	                  		            	 <c:set var="next" value="disable" scope="page" />	
+	                  		              </c:if>
+										  <li><a href="#" class="next ${next}"> Next 
+										    	<i class="fa fa-chevron-right"></i>
+										  </a></li>
+	                  		      </c:if>
+								  
 							</ul>
 	                  
 	                  </div>
@@ -113,7 +129,7 @@
 </div>
 <script>
 	$(document).ready(function(){
-		command.ui.setDateRangePicker('#start-dt');
+		command.ui.setDateRangePicker('#start-dt',"#end-dt",1);
 		//$("#start-dt").datepicker('getDate');
 		//$("#end-dt").datepicker();
 	});

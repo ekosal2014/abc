@@ -273,6 +273,11 @@ th {
     border-radius: 100%;
     background-color: #F7C12C;
 }
+
+.active{
+	background-color: #337ab7;
+}
+
 .pagination a {
     float: left;
     display: block;
@@ -483,4 +488,9 @@ ul{
     padding: 2px 16px;
     background-color: #2A3F54;
     color: white;
+}
+
+.disable{
+	cursor: not-allowed;
+	border-color: #ddd;
 }
