@@ -93,11 +93,17 @@
 										      Previous
 										    </a>
 										  </li>
-										  <c:forEach begin="${pagination.currentPage }" end="${pagination.totalPage }" step="i">
-										  	<c:if test="${pagination.currentPage == i}">
-										  		<li><a href="#" class="active">1</a></li>
-										  	</c:if>										  	
-										  </c:forEach>
+										<c:forEach begin="${pagination.currentPage }" end="${pagination.totalPage }" step="1" var="i">
+										  	<c:choose>
+										  		<c:when test="${pagination.currentPage == i}">
+										  			<li><a href="#" class="active">${i }</a></li>
+										  		</c:when>
+										  		<c:otherwise>
+										  			<li><a href="#">${i }</a></li>
+										  		</c:otherwise>
+										  	</c:choose>
+										  									  	
+										  </c:forEach> 
 										  
 										 <!--  <li> <a href="#">2</a></li>
 										  <li> <a href="#">...</a></li>
