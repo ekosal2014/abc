@@ -22,7 +22,7 @@
 			<div id="content-wrapper">
 				<div class="content-header blue">lkdaa</div>
 				<div class="content-search ">
-				    <div class="col-sm-1 col-xs-12">
+				    <!-- <div class="col-sm-1 col-xs-12">
 						<input type="text" class="form-control col-xs-12" name="start-dt" id="start-dt"> 
 					</div>
 					 <div class="col-xs-12" style="margin-left: 10px;margin-top: 10px;">
@@ -30,6 +30,14 @@
 					</div>
 					<div style="padding-left:0px;" class="col-sm-1 col-xs-12" >
 						<input type="text" class="form-control col-xs-12" name="end-dt" id="end-dt">
+					</div> -->
+					<div style="padding-left:0px;" class="col-sm-1 col-xs-12" >
+					    <select class="form-control col-xs-12">
+					    	<option value="15">15</option>
+					    	<option value="15">30</option>
+					    	<option value="15">50</option>
+					    	<option value="15">100</option>
+					    </select>
 					</div>
 					<div class="col-sm-4 col-xs-12">
 						<input type="text" class="form-control col-xs-12" name="p-name" id="p-name" placeholder="Example placeholder..." style="margin-left: 20px;">
@@ -92,7 +100,9 @@
 										    <i class="fa fa-chevron-left"></i>
 										      Previous
 										    </a>
-										  </li>
+										 </li>
+										 
+										 										 
 										<c:forEach begin="${pagination.currentPage }" end="${pagination.totalPage }" step="1" var="i">
 										  	<c:choose>
 										  		<c:when test="${pagination.currentPage == i}">
