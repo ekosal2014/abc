@@ -175,8 +175,8 @@ public class UserController {
 		return checkUserUrlSts(session,request, "product");
 	}
 	
-	@RequestMapping(value="/search-product", method = RequestMethod.POST)
-	public @ResponseBody ModelMap userProductInformationPage(HttpSession session,HttpServletRequest request,@RequestParam int size,@RequestParam int page, ProductForm form){
+	@RequestMapping(value="/search-product", method = RequestMethod.GET)
+	public @ResponseBody ModelMap userProductInformationPage(HttpSession session,HttpServletRequest request,@RequestParam int size,@RequestParam int page){
 		
 		Pagination pagination = new Pagination();
 		ModelMap map = new ModelMap();

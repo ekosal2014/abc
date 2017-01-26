@@ -2,6 +2,19 @@ $(document).ready(function(){
 	$(document).on('click','.image-content>ul>li #image-label', function(){
 		$(this).parent('#image-preview').find('#image-upload').trigger('click');
 	});
+	
+	$('.pagination li a.normal').click(function(){
+		$.ajax({
+			  type: "GET",
+			  url: '../user/search-product',
+			  data: {'page':$(this).attr('data-id'),'size':$('#number-no').val()},
+			  success: function(data){
+				 console.log(data);
+			  },error:function(data){
+				  console.log(data);
+			  }
+			});
+	});
 });
 
 function imageView(input){
@@ -19,4 +32,9 @@ function imageView(input){
 
 		    reader.readAsDataURL(input.files[0]);
 		  }
+}
+
+function table_List(){
+	
+	
 }

@@ -12,6 +12,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath }/static/vendor/js/moment.js"></script>
 <script src="${pageContext.request.contextPath }/static/vendor/js/command.js"></script>
+<script src="${pageContext.request.contextPath }/static/user/product.js"></script>
 </head>
 <body>
 <div class="page-wrapper">
@@ -32,7 +33,7 @@
 						<input type="text" class="form-control col-xs-12" name="end-dt" id="end-dt">
 					</div> -->
 					<div style="padding-left:0px;" class="col-sm-1 col-xs-12" >
-					    <select class="form-control col-xs-12">
+					    <select class="form-control col-xs-12" id="number-no">
 					    	<option value="15">15</option>
 					    	<option value="30">30</option>
 					    	<option value="50">50</option>
@@ -106,10 +107,10 @@
 										<c:forEach begin="${pagination.currentPage }" end="${pagination.totalPage }" step="1" var="i">
 										  	<c:choose>
 										  		<c:when test="${pagination.currentPage == i}">
-										  			<li><a href="#" class="active">${i }</a></li>
+										  			<li><a href="#" class="active" data-id="${i }">${i }</a></li>
 										  		</c:when>
 										  		<c:otherwise>
-										  			<li><a href="#">${i }</a></li>
+										  			<li><a href="#" class="normal" data-id="${i }">${i }</a></li>
 										  		</c:otherwise>
 										  	</c:choose>
 										  									  	
