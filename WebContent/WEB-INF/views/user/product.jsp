@@ -34,9 +34,9 @@
 					<div style="padding-left:0px;" class="col-sm-1 col-xs-12" >
 					    <select class="form-control col-xs-12">
 					    	<option value="15">15</option>
-					    	<option value="15">30</option>
-					    	<option value="15">50</option>
-					    	<option value="15">100</option>
+					    	<option value="30">30</option>
+					    	<option value="50">50</option>
+					    	<option value="100">100</option>
 					    </select>
 					</div>
 					<div class="col-sm-4 col-xs-12">
