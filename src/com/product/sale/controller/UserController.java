@@ -165,10 +165,10 @@ public class UserController {
 		
 		Pagination pagination = new Pagination();		
 		pagination.setCurrentPage(1);
-		pagination.setPerPage(2);
+		pagination.setPerPage(15);
 		pagination.setTotalCount(productService.productListCount(request));
 		pagination.setTotalPage(pagination.TotalPage());
-		List<Map>  ListHolder = productService.productList(request,pagination);	
+		List<Map>  ListHolder = productService.productList(request,pagination,"");	
 		map.put("pagedListHolder", ListHolder);
 		map.put("pagination", pagination);
 	
@@ -181,8 +181,8 @@ public class UserController {
 		Pagination pagination = new Pagination();
 		ModelMap map = new ModelMap();
 		pagination.setCurrentPage(page);
-		pagination.setPerPage(2);
-		map.put("List", productService.productList(request,pagination));
+		pagination.setPerPage(size);
+		map.put("List", productService.productList(request,pagination,""));
 		pagination.setTotalCount(productService.productListCount(request));
 		pagination.setTotalPage(pagination.TotalPage());		
 		map.put("pagination", pagination);

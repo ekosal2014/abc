@@ -14,7 +14,7 @@ import com.product.sale.utils.Pagination;
 
 public interface ProductService {
 	public Message productAdd(HttpServletRequest request,ProductForm form, MultipartFile[] multi);
-	public List<Map> productList(HttpServletRequest request,Pagination pagination);
+	public List<Map> productList(HttpServletRequest request,Pagination pagination, String name);
 	public Long productListCount(HttpServletRequest request);
 	public Message productDelete(HttpServletRequest request,int pId);
 }

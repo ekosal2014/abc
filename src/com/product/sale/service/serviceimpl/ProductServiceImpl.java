@@ -31,9 +31,9 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Map> productList(HttpServletRequest request,Pagination pagination) {
+	public List<Map> productList(HttpServletRequest request,Pagination pagination,String name) {
 		// TODO Auto-generated method stub
-		return productDao.productList(request,pagination);
+		return productDao.productList(request,pagination,name);
 	}
 
 	@Override

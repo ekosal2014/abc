@@ -52,7 +52,7 @@
 				</div>
 				<div id="content">
 					<div class="x_content">
-	                    <table class="table">
+	                    <table class="table" id="tbl-result">
 	                      <thead>
 	                        <tr>
 	                          <th>#</th>
@@ -97,36 +97,49 @@
 	                  		            <c:if test="${pagination.currentPage == 1 }">
 	                  		            	 <c:set var="dis" value="disable" scope="page" />	
 	                  		            </c:if>
-	                  		      		 <li><a href="#" class="prev  ${dis }">
+	                  		      		 <li><a href="javascript:" class="prev  ${dis }">
 										    <i class="fa fa-chevron-left"></i>
 										      Previous
 										    </a>
 										 </li>
-										 
-										 										 
-										<c:forEach begin="${pagination.currentPage }" end="${pagination.totalPage }" step="1" var="i">
-										  	<c:choose>
-										  		<c:when test="${pagination.currentPage == i}">
-										  			<li><a href="#" class="active" data-id="${i }">${i }</a></li>
-										  		</c:when>
-										  		<c:otherwise>
-										  			<li><a href="#" class="normal" data-id="${i }">${i }</a></li>
-										  		</c:otherwise>
-										  	</c:choose>
-										  									  	
-										  </c:forEach> 
+										 <c:choose>
+										 		<c:when test="${pagination.totalPage > 10 }">
+										 			<c:forEach begin="1" end="5" step="1" var="i">
+													  	<c:choose>
+													  		<c:when test="${pagination.currentPage == i}">
+													  			<li><a href="javascript:" class="active" data-id="${i }" onclick="listData(this)">${i }</a></li>
+													  		</c:when>
+													  		<c:otherwise>
+													  			<li><a href="javascript:" class="normal" data-id="${i }" onclick="listData(this)">${i }</a></li>
+													  		</c:otherwise>
+													  	</c:choose>													  									  	
+													  </c:forEach> 
+													  <li><a href="javascript:" class="normal" data-id="${i }" >...</a></li>
+													  <li><a href="javascript:" class="normal" data-id="${pagination.totalPage - 1 }" onclick="listData(this)">${pagination.totalPage - 1 }</a></li>
+													  <li><a href="javascript:" class="normal" data-id="${pagination.totalPage }" onclick="listData(this)">${pagination.totalPage }</a></li>
+										 		</c:when>
+										 		<c:otherwise>
+										 			<c:forEach begin="${pagination.currentPage }" end="${pagination.totalPage }" step="1" var="i">
+													  	<c:choose>
+													  		<c:when test="${pagination.currentPage == i}">
+													  			<li><a href="javascript:" class="active" data-id="${i }" onclick="listData(this)">${i }</a></li>
+													  		</c:when>
+													  		<c:otherwise>
+													  			<li><a href="javascript:" class="normal" data-id="${i }" onclick="listData(this)">${i }</a></li>
+													  		</c:otherwise>
+													  	</c:choose>
+													  									  	
+													  </c:forEach> 
+										 		</c:otherwise>
+										 </c:choose>
+																	 
+										
 										  
-										 <!--  <li> <a href="#">2</a></li>
-										  <li> <a href="#">...</a></li>
-										  <li> <a href="#">3</a></li>
-										  <li> <a href="#">4</a></li>
-										  <li> <a href="#" class="active">5</a></li>
-										  <li> <a href="#">...</a></li>
-										  <li> <a href="#">7</a></li> -->
+										 
 										  <c:if test="${pagination.currentPage >= pagination.totalPage }">
 	                  		            	 <c:set var="next" value="disable" scope="page" />	
 	                  		              </c:if>
-										  <li><a href="#" class="next ${next}"> Next 
+										  <li><a href="javascript:" class="next ${next}"> Next 
 										    	<i class="fa fa-chevron-right"></i>
 										  </a></li>
 	                  		      </c:if>

@@ -106,13 +106,13 @@ public class ProductDaoImpl implements ProductDao{
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Map> productList(HttpServletRequest request,Pagination pagination) {
+	public List<Map> productList(HttpServletRequest request,Pagination pagination,String name) {
 		// TODO Auto-generated method stub
 		Session session = null;
 		try{
 			session = sessionFactory.openSession();
 			Query query = session.createQuery("SELECT new Map(P.pId AS P_ID, P.pName AS P_NAME, P.pPrice AS P_PRICE, P.pdiscount AS P_DISCOUND, DATE_FORMAT(P.pStartDt,'%d-%m-%Y') AS P_START_DT, P.psts AS P_STS) "+
-			                                  "FROM Product P WHERE P.user.uId = :uid "+
+			                                  "FROM Product P WHERE P.user.uId = :uid AND P.pName like '||:pName||%'"+
 											  "ORDER BY P.pStartDt DESC,P.psts ASC");
 				  query.setParameter("uid", ((Users)request.getSession().getAttribute("user")).getuId());				  
 				  query.setFirstResult(pagination.previousPage() * pagination.getPerPage());
