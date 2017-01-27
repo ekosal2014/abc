@@ -81,8 +81,8 @@
 			                          	</c:if>
 			                         </th>
 			                          <td style="width:15%">
-			                          	<a href="javascript:" class="btn btn-small btn-yellow">Edit</a> | 
-			                          	<a href="javascript:" class="btn btn-small btn-red">Delete</a>
+			                          	<a href="javascript:" class="btn btn-small btn-yellow" data-id="${item.P_ID }">Edit</a> | 
+			                          	<a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="${item.P_ID }">Delete</a>
 			                          </td>
 			                   	    </tr>
 			                   	    

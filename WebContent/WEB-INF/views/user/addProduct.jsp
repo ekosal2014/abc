@@ -30,25 +30,25 @@
 					 <div class="form-group" style="padding:10px 0 0 0;">
 						<label class="col-sm-1 control-label">Category Name : </label>
 						<div class="col-sm-5 col-xs-12">
-							<input type="text" class="form-control col-xs-12" id="" placeholder="Example placeholder..."/>
+							<input type="text" class="form-control col-xs-12" id="txt-category-name" placeholder="Example placeholder..."/>
 						</div>
 						<div style="clear: both;"></div>
 					</div>
-					<div class="form-group" style="padding:10px 0 0 0;"> 
+					<div class="form-group" style="padding:10px 0 0 0;display:none"> 
 						<label class="col-sm-1 control-label">Price : </label>
 						<div class="col-sm-5 col-xs-12">
 							<input type="number" class="form-control col-xs-12" id="" placeholder="Example placeholder..." maxlength="9"/>
 						</div>
 						<div style="clear: both;"></div>
 					</div>
-					<div class="form-group" style="padding:10px 0 0 0;">
+					<div class="form-group" style="padding:10px 0 0 0;display:none;">
 						<label class="col-sm-1 control-label">Discount : </label>
 						<div class="col-sm-5 col-xs-12">
 							<input type="number" class="form-control col-xs-12" id="" placeholder="Example placeholder..." maxlength="2"/>
 						</div>
 						<div style="clear: both;"></div>
 					</div>
-					<div class="form-group" style="padding:10px 0 0 0;">
+					<div class="form-group" style="padding:10px 0 0 0;display: none;">
 						<label class="col-sm-1 control-label">Menu Name : </label>
 						<div class="col-sm-5 col-xs-12">
 							<input type="text" class="form-control col-xs-12" id="" placeholder="Example placeholder..."/>
@@ -143,5 +143,47 @@
 <script type="text/javascript">
 
 </script>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" style="width:800px;">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h3>Modal Header</h3>
+    </div>
+    <div class="modal-body">
+      <p style="position: relative;">
+      	  <nav>
+		    <ul>
+		        <li><a href="#">Nav 1</a></li>
+		        <li><a href="#">Nav 2</a></li>
+		        <li class="dropdown">
+		            <a href="#">Nav 3</a>
+		            <ul class="sub-menu">
+		                <li><a href="#">Nav 3.1</a></li>
+		                <li class="dropdown">
+		                    <a href="#">Nav 3.4</a>
+		                    <ul class="sub-menu">
+		                        <li><a href="#">Nav 3.4.1</a></li>
+		                        <li class="dropdown">
+		                            <a href="#">Nav 3.4.2</a>
+		                           
+		                        </li>
+		                    </ul>
+		                </li>
+		                <li><a href="#">Nav 3.5</a></li>
+		            </ul>
+		         </li>
+			</ul>
+		</nav>
+      </p>      
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>

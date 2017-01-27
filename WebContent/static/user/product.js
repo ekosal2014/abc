@@ -29,7 +29,33 @@ $(document).ready(function(){
 		});
 	});
 	
+	$('#tbl-result tbody td a.btn-delete').click(function(){
+		var frm = window.confirm('Do you want to delete this item.');
+		if (frm == true){
+			$.ajax({
+				  type: "GET",
+				  url: '../user/delete-product',
+				  data: {'pId':$(this).attr('data-id')},
+				  success: function(data){
+					  var msg = jQuery.parseJSON(data)
+					  alert(msg.msg);
+					  window.location.href = "../user/product";
+				  },error:function(data){
+					  var msg = jQuery.parseJSON(data)
+					  alert(msg.msg);
+					  window.location.href = "../user/product";
+				  }
+			});
+		}
+		
+	});
 	
+	$('#txt-category-name').click(function(){
+		$('#myModal').css('display','block');
+	});
+	$('.close,#btn_cancel').click(function(){
+		$('#myModal').css('display','none');
+	});
 	
 });
 

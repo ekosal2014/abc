@@ -214,8 +214,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/delete-product", method = RequestMethod.GET)
-	public @ResponseBody Message userDeleteProduct(@RequestParam int pId,HttpServletRequest request){		
-		return productService.productDelete(request, pId);
+	public @ResponseBody String userDeleteProduct(@RequestParam int pId,HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException{	
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = ow.writeValueAsString(productService.productDelete(request, pId));
+		return json;
 	}
 	
 	
