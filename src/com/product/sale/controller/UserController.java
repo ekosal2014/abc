@@ -166,7 +166,7 @@ public class UserController {
 		Pagination pagination = new Pagination();		
 		pagination.setCurrentPage(1);
 		pagination.setPerPage(15);
-		pagination.setTotalCount(productService.productListCount(request));
+		pagination.setTotalCount(productService.productListCount(request,""));
 		pagination.setTotalPage(pagination.TotalPage());
 		List<Map>  ListHolder = productService.productList(request,pagination,"");	
 		map.put("pagedListHolder", ListHolder);
@@ -176,14 +176,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/search-product", method = RequestMethod.GET)
-	public @ResponseBody ModelMap userProductInformationPage(HttpSession session,HttpServletRequest request,@RequestParam int size,@RequestParam int page){
+	public @ResponseBody ModelMap userProductInformationPage(HttpSession session,HttpServletRequest request,@RequestParam int size,@RequestParam int page,@RequestParam String name){
 		
 		Pagination pagination = new Pagination();
 		ModelMap map = new ModelMap();
 		pagination.setCurrentPage(page);
 		pagination.setPerPage(size);
-		map.put("List", productService.productList(request,pagination,""));
-		pagination.setTotalCount(productService.productListCount(request));
+		map.put("List", productService.productList(request,pagination,name.trim()));
+		pagination.setTotalCount(productService.productListCount(request,name.trim()));
 		pagination.setTotalPage(pagination.TotalPage());		
 		map.put("pagination", pagination);
 		return map;

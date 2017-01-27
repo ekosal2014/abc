@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -112,9 +113,10 @@ public class ProductDaoImpl implements ProductDao{
 		try{
 			session = sessionFactory.openSession();
 			Query query = session.createQuery("SELECT new Map(P.pId AS P_ID, P.pName AS P_NAME, P.pPrice AS P_PRICE, P.pdiscount AS P_DISCOUND, DATE_FORMAT(P.pStartDt,'%d-%m-%Y') AS P_START_DT, P.psts AS P_STS) "+
-			                                  "FROM Product P WHERE P.user.uId = :uid AND P.pName like '||:pName||%'"+
+			                                  "FROM Product P WHERE P.user.uId = :uid AND P.pName like :pName||'%' "+
 											  "ORDER BY P.pStartDt DESC,P.psts ASC");
-				  query.setParameter("uid", ((Users)request.getSession().getAttribute("user")).getuId());				  
+				  query.setParameter("uid", ((Users)request.getSession().getAttribute("user")).getuId());
+				  query.setParameter("pName", name);
 				  query.setFirstResult(pagination.previousPage() * pagination.getPerPage());
 				  query.setMaxResults(pagination.getPerPage());
 			List<Map> list= (List<Map>)query.list();
@@ -162,13 +164,14 @@ public class ProductDaoImpl implements ProductDao{
 	}
 
 	@Override
-	public Long productListCount(HttpServletRequest request) {
+	public Long productListCount(HttpServletRequest request,String name) {
 		Session session = null;
 		try{
 			session = sessionFactory.openSession();
 		
 			return (Long) session.createCriteria(Product.class)
 					             .add(Restrictions.eq("user", (Users)request.getSession().getAttribute("user")))
+					             .add(Restrictions.ilike("pName", name, MatchMode.END))
 					             .setProjection(Projections.rowCount()).uniqueResult();			
 		}catch(Exception e){
 			e.printStackTrace();

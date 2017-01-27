@@ -43,9 +43,9 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public Long productListCount(HttpServletRequest request) {
+	public Long productListCount(HttpServletRequest request,String name) {
 		// TODO Auto-generated method stub
-		return productDao.productListCount(request);
+		return productDao.productListCount(request,name);
 	}
 
 }

@@ -44,7 +44,7 @@
 						<input type="text" class="form-control col-xs-12" name="p-name" id="p-name" placeholder="Example placeholder..." style="margin-left: 20px;">
 					</div>
 					<div class="col-sm-2 col-xs-12">
-						<a href="../user/addProduct" class="btn btn-blue btn-big" style="margin-left: 30px;">Search</a>
+						<a href="javascript:" id="btn-search" class="btn btn-blue btn-big" style="margin-left: 30px;">Search</a>
 					</div>					
 				</div>
 				<div class="content-tool">				   
