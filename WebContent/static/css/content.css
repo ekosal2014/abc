@@ -509,7 +509,8 @@ nav ul {
     width:250px;
      position:relative;
 }
-nav ul li {
+nav ul li a{
+	border-bottom:solid 1px rgb(200,50,50);
 }
 /* sub navigation */
 nav li ul {    
@@ -518,6 +519,7 @@ nav li ul {
     left:250px;
     top:0px; /* make this equal to the line-height of the links (specified below) */
     width:250px;
+     display:none;
 }
 nav li li {
     margin:0;
@@ -528,6 +530,7 @@ nav li li ul {
     top:0;
     left:250px; /* make this equal to the width of the sub nav above */
     margin:0;
+   
 }
 
 /* style all links */
@@ -559,13 +562,13 @@ nav li li:last-child a {
 
 /* show arrows for dropdowns */
 nav li.dropdown > a {
-    background-image:url('/../static/vendor/img/arrow-down.png');
+    background-image:url('/ProductSale/static/vendor/img/arrow-down.png');
     background-position:right 20px;
     background-repeat:no-repeat;
 }
 
 nav li li.dropdown > a {
-    background-image:url('/user/static/vendor/img/arrow-right.png');
+    background-image:url('/ProductSale/static/vendor/img/arrow-right.png');
     background-position:right 16px;
     background-repeat:no-repeat;
 }

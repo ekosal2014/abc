@@ -153,31 +153,34 @@
       <h3>Modal Header</h3>
     </div>
     <div class="modal-body">
-      <p style="position: relative;">
       	  <nav>
 		    <ul>
-		        <li><a href="#">Nav 1</a></li>
-		        <li><a href="#">Nav 2</a></li>
+		        <li><a href="javascript:">Nav 1</a></li>
+		        <li><a href="javascript:">Nav 2</a></li>
 		        <li class="dropdown">
-		            <a href="#">Nav 3</a>
+		            <a href="javascript:">Nav 3</a>
 		            <ul class="sub-menu">
-		                <li><a href="#">Nav 3.1</a></li>
+		                <li><a href="javascript:">Nav 3.1</a></li>
 		                <li class="dropdown">
-		                    <a href="#">Nav 3.4</a>
+		                    <a href="javascript:">Nav 3.4</a>
 		                    <ul class="sub-menu">
-		                        <li><a href="#">Nav 3.4.1</a></li>
-		                        <li class="dropdown">
-		                            <a href="#">Nav 3.4.2</a>
+		                        <li><a href="javascript:">Nav 3.4.1</a></li>
+		                        <li>
+		                            <a href="javascript:">Nav 3.4.2</a>
 		                           
 		                        </li>
 		                    </ul>
 		                </li>
-		                <li><a href="#">Nav 3.5</a></li>
+		                <li><a href="javascript:">Nav 3.5</a></li>
+		                <li><a href="javascript:">Nav 3.5</a></li>
+		                <li><a href="javascript:">Nav 3.5</a></li>
+		                <li><a href="javascript:">Nav 3.5</a></li>
+		                <li><a href="javascript:">Nav 3.5</a></li>
+		                <li><a href="javascript:">Nav 3.5</a></li>
 		            </ul>
 		         </li>
 			</ul>
-		</nav>
-      </p>      
+		</nav>    
     </div>
     <div class="modal-footer">
       <h3>Modal Footer</h3>

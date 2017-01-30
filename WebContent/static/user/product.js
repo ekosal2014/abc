@@ -56,6 +56,10 @@ $(document).ready(function(){
 	$('.close,#btn_cancel').click(function(){
 		$('#myModal').css('display','none');
 	});
+	$('.modal-body ul li').click(function(){
+		$('.modal-body ul li ul').hide();
+		$(this).children('.sub-menu').slideDown(200);
+	});
 	
 });
 
