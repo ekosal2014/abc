@@ -57,7 +57,8 @@ $(document).ready(function(){
 		$('#myModal').css('display','none');
 	});
 	$('.modal-body ul li').click(function(){
-		$('.modal-body ul li ul').hide();
+		console.log($('.modal-body ul').height());
+        console.log($(this).children('.sub-menu').height());
 		$(this).children('.sub-menu').slideDown(200);
 	});
 	

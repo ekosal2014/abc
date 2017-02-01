@@ -156,10 +156,8 @@
       	  <nav>
 		    <ul>
 		        <li><a href="javascript:">Nav 1</a></li>
-		        <li><a href="javascript:">Nav 2</a></li>
-		        <li class="dropdown">
-		            <a href="javascript:">Nav 3</a>
-		            <ul class="sub-menu">
+		        <li><a href="javascript:">Nav 2</a>
+		        	<ul class="sub-menu">
 		                <li><a href="javascript:">Nav 3.1</a></li>
 		                <li class="dropdown">
 		                    <a href="javascript:">Nav 3.4</a>
@@ -178,6 +176,10 @@
 		                <li><a href="javascript:">Nav 3.5</a></li>
 		                <li><a href="javascript:">Nav 3.5</a></li>
 		            </ul>
+		        </li>
+		        <li class="dropdown">
+		            <a href="javascript:">Nav 3</a>
+		            
 		         </li>
 			</ul>
 		</nav>    

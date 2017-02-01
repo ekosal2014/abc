@@ -515,7 +515,7 @@ nav ul li a{
 /* sub navigation */
 nav li ul {    
     background-color:rgb(225,75,75);
-    position:absolute;
+    position:relative;
     left:250px;
     top:0px; /* make this equal to the line-height of the links (specified below) */
     width:250px;
@@ -526,7 +526,7 @@ nav li li {
     display:block;
 }
 nav li li ul {
-    position:absolute;
+    position:relative;
     top:0;
     left:250px; /* make this equal to the width of the sub nav above */
     margin:0;
