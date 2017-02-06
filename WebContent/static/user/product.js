@@ -57,8 +57,11 @@ $(document).ready(function(){
 		$('#myModal').css('display','none');
 	});
 	$('.modal-body ul li').click(function(){
-		console.log($('.modal-body ul').height());
-        console.log($(this).children('.sub-menu').height());
+		alert(12345);
+		$(this).parent('ul').find('ul').hide();
+		if ($('.modal-body ul').height() < $(this).children('.sub-menu').height()){
+        	$('.modal-body ul').css('height',$(this).children('.sub-menu').height());
+        }
 		$(this).children('.sub-menu').slideDown(200);
 	});
 	
