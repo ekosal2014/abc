@@ -156,12 +156,12 @@
     <div class="modal-body">
       	  <nav>
 		    <ul>
-		        <li class="main"><a href="javascript:" data-id="1">Nav 1</a></li>
-		        <li class="main"><a href="javascript:" data-id="2">Nav 2</a>
+		        <li><a href="javascript:" data-id="1" class="main">Nav 1</a></li>
+		        <li><a href="javascript:" data-id="2" class="main">Nav 2</a>
 		        	<ul class="sub-menu">
 		                <li class="submain"><a href="javascript:" data-id="3">Nav 3.1</a></li>
-		                <li class="dropdown submain">
-		                    <a href="javascript:">Nav 3.4</a>
+		                <li class="dropdown ">
+		                    <a href="javascript:" class="submain">Nav 3.4</a>
 		                    <ul class="sub-menu">
 		                        <li><a href="javascript:">Nav 3.4.1</a></li>
 		                        <li>
@@ -178,8 +178,8 @@
 		                <li class="submain"><a href="javascript:">Nav 3.5</a></li>
 		            </ul>
 		        </li>
-		        <li class="dropdown main">
-		            <a href="javascript:">Nav 3</a>		            
+		        <li class="dropdown">
+		            <a href="javascript:" class="main">Nav 3</a>		            
 		         </li>
 			</ul>
 		</nav>    

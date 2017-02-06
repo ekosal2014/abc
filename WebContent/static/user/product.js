@@ -58,22 +58,25 @@ $(document).ready(function(){
 		$('#myModal').css('display','none');
 	});
 	
-	$('.modal-body ul li.main').hover(function(){
-		$(this).parent('ul').find('ul').hide();
-		if ($('.modal-body ul').height() < $(this).children('.sub-menu').height()){
-        	$('.modal-body ul').css('height',$(this).children('.sub-menu').height());
+	$('.modal-body ul li a.main').hover(function(){
+		//$(this).parent('ul').find('ul').hide();
+		$('.modal-body li ul').hide();
+		if ($('.modal-body ul').height() < $(this).parent('li').children('.sub-menu').height()){
+        	$('.modal-body ul').css('height',$(this).parent('li').children('.sub-menu').height());
         }
-		$(this).children('.sub-menu').slideDown(200);
+		$(this).parent('li').children('.sub-menu').show();
 	});
-	$('.modal-body ul li.submain').hover(function(){
-		$(this).parent('ul').find('ul').hide();
-		if ($(this).parent('ul').height() < $(this).children('.sub-menu').height()){
-			$(this).parent('ul').css('height',$(this).children('.sub-menu').height());
+	$('.modal-body ul li a.submain').hover(function(){
+		//$(this).parent('ul').find('ul').hide();
+		$('.nav li ul').hide();
+		if ($(this).parent('ul').height() < $(this).parent('li').children('.sub-menu').height()){
+			$(this).parent('li').parent('ul').css('height',$(this).parent('li').children('.sub-menu').height());
         }
-		$(this).children('.sub-menu').slideDown(200);
+		$(this).parent('li').children('.sub-menu').show();
 	});
 	
-	$('.modal-body li a').click(function(){
+	$('.modal-body ul li a.main').click(function(){
+		alert(21234);
 		alert($(this).attr('data-id'));
 	});
 });
