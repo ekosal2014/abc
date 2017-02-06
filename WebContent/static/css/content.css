@@ -526,7 +526,7 @@ nav li li {
     display:block;
 }
 nav li li ul {
-    position:relative;
+    position:absolute;
     top:0;
     left:250px; /* make this equal to the width of the sub nav above */
     margin:0;
@@ -566,6 +566,7 @@ nav li.dropdown > a {
     background-position:right 20px;
     background-repeat:no-repeat;
 }
+
 
 nav li li.dropdown > a {
     background-image:url('/ProductSale/static/vendor/img/arrow-right.png');

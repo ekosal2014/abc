@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	$(document).on('click','.image-content>ul>li #image-label', function(){
 		$(this).parent('#image-preview').find('#image-upload').trigger('click');
@@ -56,15 +57,25 @@ $(document).ready(function(){
 	$('.close,#btn_cancel').click(function(){
 		$('#myModal').css('display','none');
 	});
-	$('.modal-body ul li').click(function(){
-		alert(12345);
+	
+	$('.modal-body ul li.main').hover(function(){
 		$(this).parent('ul').find('ul').hide();
 		if ($('.modal-body ul').height() < $(this).children('.sub-menu').height()){
         	$('.modal-body ul').css('height',$(this).children('.sub-menu').height());
         }
 		$(this).children('.sub-menu').slideDown(200);
 	});
+	$('.modal-body ul li.submain').hover(function(){
+		$(this).parent('ul').find('ul').hide();
+		if ($(this).parent('ul').height() < $(this).children('.sub-menu').height()){
+			$(this).parent('ul').css('height',$(this).children('.sub-menu').height());
+        }
+		$(this).children('.sub-menu').slideDown(200);
+	});
 	
+	$('.modal-body li a').click(function(){
+		alert($(this).attr('data-id'));
+	});
 });
 
 function imageView(input){

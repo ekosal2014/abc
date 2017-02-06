@@ -31,6 +31,7 @@
 						<label class="col-sm-1 control-label">Category Name : </label>
 						<div class="col-sm-5 col-xs-12">
 							<input type="text" class="form-control col-xs-12" id="txt-category-name" placeholder="Example placeholder..."/>
+							<span>a</span><span> => b </span><span> => c </span><a class="btn"> Change</a>
 						</div>
 						<div style="clear: both;"></div>
 					</div>
@@ -155,11 +156,11 @@
     <div class="modal-body">
       	  <nav>
 		    <ul>
-		        <li><a href="javascript:">Nav 1</a></li>
-		        <li><a href="javascript:">Nav 2</a>
+		        <li class="main"><a href="javascript:" data-id="1">Nav 1</a></li>
+		        <li class="main"><a href="javascript:" data-id="2">Nav 2</a>
 		        	<ul class="sub-menu">
-		                <li><a href="javascript:">Nav 3.1</a></li>
-		                <li class="dropdown">
+		                <li class="submain"><a href="javascript:" data-id="3">Nav 3.1</a></li>
+		                <li class="dropdown submain">
 		                    <a href="javascript:">Nav 3.4</a>
 		                    <ul class="sub-menu">
 		                        <li><a href="javascript:">Nav 3.4.1</a></li>
@@ -169,17 +170,16 @@
 		                        </li>
 		                    </ul>
 		                </li>
-		                <li><a href="javascript:">Nav 3.5</a></li>
-		                <li><a href="javascript:">Nav 3.5</a></li>
-		                <li><a href="javascript:">Nav 3.5</a></li>
-		                <li><a href="javascript:">Nav 3.5</a></li>
-		                <li><a href="javascript:">Nav 3.5</a></li>
-		                <li><a href="javascript:">Nav 3.5</a></li>
+		                <li class="submain"><a href="javascript:">Nav 3.5</a></li>
+		                <li class="submain"><a href="javascript:">Nav 3.5</a></li>
+		                <li class="submain"><a href="javascript:">Nav 3.5</a></li>
+		                <li class="submain"><a href="javascript:">Nav 3.5</a></li>
+		                <li class="submain"><a href="javascript:">Nav 3.5</a></li>
+		                <li class="submain"><a href="javascript:">Nav 3.5</a></li>
 		            </ul>
 		        </li>
-		        <li class="dropdown">
-		            <a href="javascript:">Nav 3</a>
-		            
+		        <li class="dropdown main">
+		            <a href="javascript:">Nav 3</a>		            
 		         </li>
 			</ul>
 		</nav>    
