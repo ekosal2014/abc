@@ -75,10 +75,23 @@ $(document).ready(function(){
 		$(this).parent('li').children('.sub-menu').show();
 	});
 	
-	$('.modal-body ul li a.main').click(function(){
-		alert(21234);
-		alert($(this).attr('data-id'));
+	$('.modal-body ul li a.data-id').click(function(){
+		var mn1,mn2,mn3='';
+		if($(this).parent('li').parent('ul').parent('li').parent('ul').parent('li').hasClass('dropdown')){
+			mn1=$(this).parent('li').parent('ul').parent('li').parent('ul').prev('a').attr('data-id');
+			mn2=$(this).parent('li').parent('ul').prev('a').attr('data-id');
+			mn3=$(this).attr('data-id');
+			alert(mn3);
+		}else if($(this).parent('li').parent('ul').parent('li').hasClass('dropdown')){
+			mn2=$(this).parent('li').parent('ul').prev('a').attr('data-id');
+			mn3=$(this).attr('data-id');
+			alert(mn3);
+		}else{
+			mn3=$(this).attr('data-id');
+			alert(mn3);
+		}
 	});
+	
 });
 
 function imageView(input){
