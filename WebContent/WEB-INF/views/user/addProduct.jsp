@@ -31,7 +31,10 @@
 						<label class="col-sm-1 control-label">Category Name : </label>
 						<div class="col-sm-5 col-xs-12">
 							<input type="text" class="form-control col-xs-12" id="txt-category-name" placeholder="Example placeholder..."/>
-							<span>a</span><span> => b </span><span> => c </span><a class="btn"> Change</a>
+							<div id="controll-menu">
+								<span id="menu-step-1">a</span><span id="menu-step-2"> => b </span><span id="menu-step-3"> => c </span><a class="btn" id="btn-change-menu"> Change</a>
+							</div>
+							
 						</div>
 						<div style="clear: both;"></div>
 					</div>
@@ -154,33 +157,58 @@
       <h3>Modal Header</h3>
     </div>
     <div class="modal-body">
+    		
       	  <nav>
 		    <ul>
-		        <li><a href="javascript:" data-id="1" class="main data-id">Nav 1</a></li>
-		        <li class="dropdown"><a href="javascript:" data-id="2" class="main">Nav 2</a>
-		        	<ul class="sub-menu">
-		                <li><a href="javascript:" class="submain data-id">Nav 3.5</a></li>
-		                <li class="dropdown ">
-		                    <a href="javascript:" class="submain">Nav 3.4</a>
-		                    <ul class="sub-menu">
-		                        <li><a href="javascript:" class="data-id">Nav 3.4.1</a></li>
-		                        <li>
-		                            <a href="javascript:" class="data-id">Nav 3.4.2</a>
-		                           
-		                        </li>
-		                    </ul>
-		                </li>
-		                <li><a href="javascript:" class="submain data-id">Nav 3.5</a></li>
-		                <li><a href="javascript:" class="submain data-id">Nav 3.5</a></li>
-		                <li><a href="javascript:" class="submain data-id">Nav 3.5</a></li>
-		                <li><a href="javascript:" class="submain data-id">Nav 3.5</a></li>
-		                <li><a href="javascript:" class="submain data-id">Nav 3.5</a></li>
-		                <li><a href="javascript:" class="submain data-id">Nav 3.5</a></li>
-		            </ul>
-		        </li>
-		        <li >
-		            <a href="javascript:" class="main data-id">Nav 3</a>		            
-		         </li>
+		        <c:forEach items="${menu }" var="lvl1" varStatus="i">
+		             <c:if test="${lvl1.sts != '0' && lvl1.menuParents == '0'}">
+		                 <c:set var="count1" value="0" scope="page" />
+		                 <c:forEach items="${menu }" var="txt1">
+		                 		<c:if test="${txt1.menuParents == lvl1.menuId}">
+		                 			<c:set var="count1" value="${count1 + 1}" scope="page"/>
+		                 		</c:if> 
+		                 </c:forEach>
+		                 <c:if test="${count1 == 0 }">
+		                 	 <li><a href="javascript:" data-id="${lvl1.menuId }" class="main data-id">${lvl1.menuName }</a></li>
+		                 </c:if>
+			        	 <c:if test="${count1 > 0 }">
+				        	 <li class="dropdown"><a href="javascript:" data-id="${lvl1.menuId }" class="main">${lvl1.menuName }</a>
+					        	<ul class="sub-menu">
+					        	     <c:forEach items="${menu }" var="lvl2">
+					        	        <c:set var="count2" value="0" scope="page" />
+										<c:if test="${lvl2.sts != '0' && lvl2.menuParents == lvl1.menuId }">
+										 <c:forEach items="${menu }" var="txt2">
+						                 		<c:if test="${txt2.menuParents == lvl2.menuId}">
+						                 			<c:set var="count2" value="${count2 + 1}" scope="page"/>
+						                 		</c:if> 
+						                 </c:forEach>
+						                 <c:if test="${count2 == 0 }">
+						                 	 <li><a href="javascript:" class="submain data-id" data-id="${lvl2.menuId }">${lvl2.menuName }</a></li>
+						                 </c:if>
+							              <c:if test="${count2 > 0 }">
+							              		<li class="dropdown ">
+							                    <a href="javascript:" class="submain" data-id="${lvl2.menuId }">${lvl2.menuName }</a>
+							                    <ul class="sub-menu">
+							                    	 <c:forEach items="${menu }" var="lvl3">
+											            <c:if test="${lvl3.sts != '0' && lvl3.menuParents == lvl2.menuId }">
+									                        <li><a href="javascript:" class="data-id" data-id="${lvl3.menuId }">${lvl3.menuName }</a></li>
+									                        
+									                	 </c:if>
+									                 </c:forEach>
+							                    </ul>
+							                </li>
+							              </c:if>							              
+						          		 </c:if>
+						           </c:forEach>
+					            </ul>
+					            </li>
+			        	 </c:if>
+				         
+				        
+				      
+			         </c:if>
+		        </c:forEach>
+		        
 			</ul>
 		</nav>    
     </div>

@@ -54,6 +54,10 @@ $(document).ready(function(){
 	$('#txt-category-name').click(function(){
 		$('#myModal').css('display','block');
 	});
+	
+	$('#btn-change-menu').click(function(){
+		$('#myModal').css('display','block');
+	});
 	$('.close,#btn_cancel').click(function(){
 		$('#myModal').css('display','none');
 	});
@@ -77,19 +81,37 @@ $(document).ready(function(){
 	
 	$('.modal-body ul li a.data-id').click(function(){
 		var mn1,mn2,mn3='';
+		$('#menu-step-1').show();
+		$('#menu-step-2').show();
+		$('#menu-step-3').show();
 		if($(this).parent('li').parent('ul').parent('li').parent('ul').parent('li').hasClass('dropdown')){
-			mn1=$(this).parent('li').parent('ul').parent('li').parent('ul').prev('a').attr('data-id');
-			mn2=$(this).parent('li').parent('ul').prev('a').attr('data-id');
-			mn3=$(this).attr('data-id');
-			alert(mn3);
+			mn1=$(this).parent('li').parent('ul').parent('li').parent('ul').prev('a').text();
+			mn2=$(this).parent('li').parent('ul').prev('a').text();
+			mn3=$(this).text();
+			$('#menu-step-1').text(mn1);
+			$('#menu-step-2').text(" => "+mn2);
+			$('#menu-step-3').text(" => "+mn3);
+			$('#txt-category-name').val($(this).attr('data-id'));
+			$('#controll-menu').show();
 		}else if($(this).parent('li').parent('ul').parent('li').hasClass('dropdown')){
-			mn2=$(this).parent('li').parent('ul').prev('a').attr('data-id');
-			mn3=$(this).attr('data-id');
-			alert(mn3);
+			mn1=$(this).parent('li').parent('ul').prev('a').text();
+			mn2=$(this).text();
+			$('#menu-step-1').text(mn1);
+			$('#menu-step-2').text(" => "+mn2);
+			$('#menu-step-3').hide();
+			$('#txt-category-name').val($(this).attr('data-id'));
+			$('#controll-menu').show();
 		}else{
-			mn3=$(this).attr('data-id');
-			alert(mn3);
+			mn1=$(this).text();
+			$('#menu-step-1').text(mn1);
+			$('#menu-step-2').hide();
+			$('#menu-step-3').hide();
+			$('#txt-category-name').val($(this).attr('data-id'));
+			$('#controll-menu').show();
 		}
+		$('#txt-category-name').hide();
+		$('#myModal').css('display','none');
+		
 	});
 	
 });

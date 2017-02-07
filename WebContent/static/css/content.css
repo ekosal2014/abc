@@ -573,3 +573,6 @@ nav li li.dropdown > a {
     background-position:right 16px;
     background-repeat:no-repeat;
 }
+#controll-menu{
+	display:none;
+}
