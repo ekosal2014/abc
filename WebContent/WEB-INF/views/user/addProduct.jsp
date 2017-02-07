@@ -55,7 +55,26 @@
 					<div class="form-group" style="padding:10px 0 0 0;display: none;">
 						<label class="col-sm-1 control-label">Menu Name : </label>
 						<div class="col-sm-5 col-xs-12">
-							<input type="text" class="form-control col-xs-12" id="" placeholder="Example placeholder..."/>
+							<select class="form-control col-xs-12">
+								 <c:forEach items="${menu }" var="lvl1">
+			                     <c:if test="${lvl1.sts != '0' && lvl1.menuParents == '0'}">
+		                   			 <c:set var="count" value="${count + 1}" scope="page"/>
+			                   		 <option value="lvl1.menuId">${lvl1.menuName }</option>
+					                <c:forEach items="${menu }" var="lvl2">
+					                  	<c:if test="${lvl2.sts != '0' && lvl2.menuParents == lvl1.menuId }">	
+					                  	   <c:set var="count" value="${count + 1}" scope="page"/> 									              								                       
+			                    		   <option value="lvl2.menuId"> __ ${lvl2.menuName }</option>
+			                            	 <c:forEach items="${menu }" var="lvl3">
+		                  						<c:if test="${lvl3.sts != '0' && lvl3.menuParents == lvl2.menuId }">
+		                  						       <c:set var="count" value="${count + 1}" scope="page"/>
+			                              			  <option value="lvl3.menuId"> __ __${lvl3.menuName }</option>
+								                </c:if>
+			                				</c:forEach>						                      							                      
+					                  	</c:if>
+					                </c:forEach>					          
+				                   </c:if>							               		   
+				               </c:forEach>		  
+							</select>
 						</div>
 						<div style="clear: both;"></div>
 					</div>
@@ -134,6 +153,8 @@
 					</div>
 				</div>
 				<div>
+				     <a href="javascript:" style="margin-left:15px;" class="btn btn-green btn-success" id="btn-cancel">Save</a>
+					 <a href="javascript:" style="margin-left:15px;" class="btn btn-green btn-success" id="btn-save">Save</a>
 				</div>
 			</div>
 		</div>

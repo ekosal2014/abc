@@ -111,6 +111,8 @@ $(document).ready(function(){
 		}
 		$('#txt-category-name').hide();
 		$('#myModal').css('display','none');
+		$('.form-group').show();
+		
 		
 	});
 	
