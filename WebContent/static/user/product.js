@@ -117,9 +117,15 @@ $(document).ready(function(){
 	});
 	
 	$('#btn-save').click(function(){
-		$('#form-add-product').ajaxSubmit(function(){
-			alert(1234);
-		});
+		var data = CKEDITOR.instances.pdescription.getData();
+		$('#pdescription').val(data);
+		$("#form-add-product").ajaxSubmit({
+			url: '../user/add-product', 
+			type: 'post',
+			success:function(data){
+				console.log(data);
+			}
+		})
 	});
 	
 });

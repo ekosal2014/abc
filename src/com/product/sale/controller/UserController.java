@@ -208,9 +208,10 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/add-product", method = RequestMethod.POST)
-	public @ResponseBody Message userAddProduct(HttpServletRequest request,@ModelAttribute ProductForm form,@RequestParam("file[]") MultipartFile[] multi){
-
-		return productService.productAdd(request, form, multi);
+	public @ResponseBody String userAddProduct(HttpServletRequest request,@ModelAttribute ProductForm form,@RequestParam("file[]") MultipartFile[] multi) throws JsonGenerationException, JsonMappingException, IOException{
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		String json = ow.writeValueAsString(productService.productAdd(request, form, multi));
+		return json;
 	}
 	
 	@RequestMapping(value="/delete-product", method = RequestMethod.GET)

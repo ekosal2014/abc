@@ -71,15 +71,15 @@
 			                          <td style="width:20%">${item.P_NAME }</td>
 			                          <th>${item.P_PRICE }</th>
 			                          <th>${item.P_DISCOUND }</th>
-			                          <th>${item.P_START_DT }</th>
-			                          <th>
+			                          <td>${item.P_START_DT }</td>
+			                          <td>
 			                          	<c:if test="${item.P_STS=='1' }">
 			                          		<span style="color:blue">Completed</span>
 			                          	</c:if>
 			                          	<c:if test="${item.P_STS=='0' }">
 			                          		<span style="color:red">Waiting</span>
 			                          	</c:if>
-			                         </th>
+			                         </td>
 			                          <td style="width:15%">
 			                          	<a href="javascript:" class="btn btn-small btn-yellow" data-id="${item.P_ID }">Edit</a> | 
 			                          	<a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="${item.P_ID }">Delete</a>

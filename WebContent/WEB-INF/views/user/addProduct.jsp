@@ -25,14 +25,14 @@
 	                  <div class="form-group" style="padding:10px 0 0 0;">
 						<label class="col-sm-1 control-label">Product Name : </label>
 						<div class="col-sm-5 col-xs-12">
-							<input type="text" class="form-control col-xs-12" id="" placeholder="Example placeholder..."/>
+							<input type="text" class="form-control col-xs-12" name="pName"  placeholder="Example placeholder..."/>
 						</div>
 						<div style="clear: both;"></div>
 					 </div>
 					 <div class="form-group" style="padding:10px 0 0 0;">
 						<label class="col-sm-1 control-label">Category Name : </label>
 						<div class="col-sm-5 col-xs-12">
-							<input type="text" class="form-control col-xs-12" id="txt-category-name" placeholder="Example placeholder..."/>
+							<input type="text" class="form-control col-xs-12" name="cateId" id="txt-category-name" placeholder="Example placeholder..."/>
 							<div id="controll-menu">
 								<span id="menu-step-1">a</span><span id="menu-step-2"> => b </span><span id="menu-step-3"> => c </span><a class="btn" id="btn-change-menu"> Change</a>
 							</div>
@@ -43,33 +43,33 @@
 					<div class="form-group" style="padding:10px 0 0 0;display:none"> 
 						<label class="col-sm-1 control-label">Price : </label>
 						<div class="col-sm-5 col-xs-12">
-							<input type="number" class="form-control col-xs-12" id="" placeholder="Example placeholder..." maxlength="9"/>
+							<input type="number" class="form-control col-xs-12" name="pPrice" placeholder="Example placeholder..." maxlength="9"/>
 						</div>
 						<div style="clear: both;"></div>
 					</div>
 					<div class="form-group" style="padding:10px 0 0 0;display:none;">
 						<label class="col-sm-1 control-label">Discount : </label>
 						<div class="col-sm-5 col-xs-12">
-							<input type="number" class="form-control col-xs-12" id="" placeholder="Example placeholder..." maxlength="2"/>
+							<input type="number" class="form-control col-xs-12" name="pdiscount" placeholder="Example placeholder..." maxlength="2"/>
 						</div>
 						<div style="clear: both;"></div>
 					</div>
 					<div class="form-group" style="padding:10px 0 0 0;display: none;">
 						<label class="col-sm-1 control-label">Menu Name : </label>
 						<div class="col-sm-5 col-xs-12">
-							<select class="form-control col-xs-12">
+							<select class="form-control col-xs-12" name="menuId">
 								 <c:forEach items="${menu }" var="lvl1">
 			                     <c:if test="${lvl1.sts != '0' && lvl1.menuParents == '0'}">
 		                   			 <c:set var="count" value="${count + 1}" scope="page"/>
-			                   		 <option value="lvl1.menuId">${lvl1.menuName }</option>
+			                   		 <option value="${lvl1.menuId }">${lvl1.menuName }</option>
 					                <c:forEach items="${menu }" var="lvl2">
 					                  	<c:if test="${lvl2.sts != '0' && lvl2.menuParents == lvl1.menuId }">	
 					                  	   <c:set var="count" value="${count + 1}" scope="page"/> 									              								                       
-			                    		   <option value="lvl2.menuId"> __ ${lvl2.menuName }</option>
+			                    		   <option value="${lvl1.menuId }"> __ ${lvl2.menuName }</option>
 			                            	 <c:forEach items="${menu }" var="lvl3">
 		                  						<c:if test="${lvl3.sts != '0' && lvl3.menuParents == lvl2.menuId }">
 		                  						       <c:set var="count" value="${count + 1}" scope="page"/>
-			                              			  <option value="lvl3.menuId"> __ __${lvl3.menuName }</option>
+			                              			  <option value="${lvl1.menuId }"> __ __${lvl3.menuName }</option>
 								                </c:if>
 			                				</c:forEach>						                      							                      
 					                  	</c:if>
@@ -89,49 +89,49 @@
 					     		<div id="image-preview">
 								  <label id="image-label">Choose File</label>
 								  <img  id="image" alt="" src="${pageContext.request.contextPath }/static/vendor/img/thin-363_photo_image_album-512.png" width="90" height="90">
-								  <input type="file" name="image" id="image-upload" style="visibility: hidden;" onchange="imageView(this)"/>
+								  <input type="file" name="file[]" id="image-upload" style="visibility: hidden;" onchange="imageView(this)"/>
 								</div>
 					     	 </li>
 					     	 <li>
 					     	 	<div id="image-preview">
 								  <label  id="image-label">Choose File</label>
 								   <img alt="" src="${pageContext.request.contextPath }/static/vendor/img/thin-363_photo_image_album-512.png" width="90" height="90">
-								  <input type="file" name="image" id="image-upload" onchange="imageView(this)"/>
+								  <input type="file" name="file[]" id="image-upload" onchange="imageView(this)"/>
 								</div>
 					     	 </li>
 					     	 <li>
 					     	 	<div id="image-preview">
 								  <label  id="image-label">Choose File</label>
 								  <img alt="" src="${pageContext.request.contextPath }/static/vendor/img/thin-363_photo_image_album-512.png" width="90" height="90">
-								  <input type="file" name="image" id="image-upload" onchange="imageView(this)"/>
+								  <input type="file" name="file[]" id="image-upload" onchange="imageView(this)"/>
 								</div>
 					     	 </li>
 					     	 <li>
 					     	 	<div id="image-preview">
 								  <label  id="image-label">Choose File</label>
 								   <img alt="" src="${pageContext.request.contextPath }/static/vendor/img/thin-363_photo_image_album-512.png" width="90" height="90">
-								  <input type="file" name="image" id="image-upload" onchange="imageView(this)"/>
+								  <input type="file" name="file[]" id="image-upload" onchange="imageView(this)"/>
 								</div>
 					     	 </li>
 					     	 <li>
 					     	 	<div id="image-preview">
 								  <label  id="image-label">Choose File</label>
 								   <img alt="" src="${pageContext.request.contextPath }/static/vendor/img/thin-363_photo_image_album-512.png" width="90" height="90">
-								  <input type="file" name="image" id="image-upload" onchange="imageView(this)"/>
+								  <input type="file" name="file[]" id="image-upload" onchange="imageView(this)"/>
 								</div>
 					     	 </li>
 					     	 <li>
 					     	 	<div id="image-preview">
 								  <label  id="image-label">Choose File</label>
 								   <img alt="" src="${pageContext.request.contextPath }/static/vendor/img/thin-363_photo_image_album-512.png" width="90" height="90">
-								  <input type="file" name="image" id="image-upload" onchange="imageView(this)"/>
+								  <input type="file" name="file[]" id="image-upload" onchange="imageView(this)"/>
 								</div>
 					     	 </li>
 					     	 <li>
 					     	 	<div id="image-preview">
 								  <label  id="image-label">Choose File</label>
 								  <img alt="" src="${pageContext.request.contextPath }/static/vendor/img/thin-363_photo_image_album-512.png" width="90" height="90">
-								  <input type="file" name="image" id="image-upload" onchange="imageView(this)"/>
+								  <input type="file" name="file[]" id="image-upload" onchange="imageView(this)"/>
 								</div>
 					     	 </li>
 					     </ul>
@@ -142,13 +142,13 @@
 					<div class="form-group" style="padding:10px 0 0 0;">
 						<label class="control-label">Description : </label>
 						<div class="">
-							<textarea name="editor1" id="editor1" rows="10" cols="80">
-				                This is my text area to be replaced with CKEditor.
+							<textarea name="pdescription" id="pdescription" rows="10" cols="80">
+				                
 				            </textarea>
 				            <script>
 				                // Replace the <textarea id="editor1"> with a CKEditor
 				                // instance, using default configuration.
-				                CKEDITOR.replace( 'editor1' );
+				                CKEDITOR.replace( 'pdescription' );
 				            </script>
 						</div>
 						<div style="clear: both;"></div>
