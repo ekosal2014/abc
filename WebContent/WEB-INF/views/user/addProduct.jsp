@@ -9,6 +9,7 @@
 <link href="${pageContext.request.contextPath }/static/css/content.css" type="text/css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="${pageContext.request.contextPath }/static/vendor/ckeditor/ckeditor.js"></script>
+<script src="${pageContext.request.contextPath }/static/js/lib/jquery.form.min.js"></script>
 <script src="${pageContext.request.contextPath }/static/user/product.js"></script>
 </head>
 <body>
@@ -17,6 +18,7 @@
 	<div id="page-wrapper-content">
 		<%@include file="sidebar.jsp" %>	
 		<div id="page-contet-wrapper"> 
+		    <form enctype="multipart/form-data" id="form-add-product">
 			<div id="content-wrapper">
 				<div class="content-header blue">lkdaa</div>				
 				<div id="content">					
@@ -157,6 +159,7 @@
 					 <a href="javascript:" style="margin-left:15px;" class="btn btn-green btn-success" id="btn-save">Save</a>
 				</div>
 			</div>
+		 </form>
 		</div>
 		<div style="clear: both;"></div>
 	</div>

@@ -116,6 +116,12 @@ $(document).ready(function(){
 		
 	});
 	
+	$('#btn-save').click(function(){
+		$('#form-add-product').ajaxSubmit(function(){
+			alert(1234);
+		});
+	});
+	
 });
 
 function imageView(input){
