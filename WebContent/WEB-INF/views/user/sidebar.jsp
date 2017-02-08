@@ -7,6 +7,7 @@
 			<li><a href="../user/menu">Menu Information</a></li>
 			<li><a href="../user/Layout">Lay Out</a></li>
 			<li><a href="../user/profile">Profile</a></li>
+			<li><a href="../user/email">E-Mail</a></li>
 		</ul>			
 	</div>
 </div>

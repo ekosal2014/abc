@@ -50,6 +50,7 @@ import com.product.sale.service.service.CategoryService;
 import com.product.sale.service.service.MenuService;
 import com.product.sale.service.service.ProductService;
 import com.product.sale.service.service.UserService;
+import com.product.sale.utils.CheckEmail;
 import com.product.sale.utils.Pagination;
 
 @Controller
@@ -108,7 +109,7 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value="pro_info", method = RequestMethod.GET)
+	@RequestMapping(value="/profile", method = RequestMethod.GET)
 	public String userProInfo(HttpSession session, HttpServletResponse response,HttpServletRequest request,ModelMap map){
 		map.addAttribute("user",(Users)request.getSession().getAttribute("user"));
 		return checkUserUrlSts(session,request, "profile");
@@ -208,10 +209,8 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/add-product", method = RequestMethod.POST)
-	public @ResponseBody String userAddProduct(HttpServletRequest request,@ModelAttribute ProductForm form,@RequestParam("file[]") MultipartFile[] multi) throws JsonGenerationException, JsonMappingException, IOException{
-		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		String json = ow.writeValueAsString(productService.productAdd(request, form, multi));
-		return json;
+	public @ResponseBody Message userAddProduct(HttpServletRequest request,@ModelAttribute ProductForm form,@RequestParam("file[]") MultipartFile[] multi) throws JsonGenerationException, JsonMappingException, IOException{
+		return productService.productAdd(request, form, multi);
 	}
 	
 	@RequestMapping(value="/delete-product", method = RequestMethod.GET)
@@ -296,8 +295,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/layout", method = RequestMethod.GET)
-	public String userMenu(HttpSession session,HttpServletRequest request){
+	public String userMenu(HttpSession session,HttpServletRequest request){		
 		return checkUserUrlSts(session,request, "layout");
+	}
+	
+	@RequestMapping(value="/email", method = RequestMethod.GET)
+	public String useremail(HttpSession session,HttpServletRequest request,ModelMap map){
+		map.put("email", CheckEmail.check("pop.gmail.com", "pop3", "ekosal2014@gmail.com", "bmyncvxibaywftpx"));
+		return checkUserUrlSts(session,request, "email");
 	}
 	
 	@RequestMapping(value="/form_upload", method = RequestMethod.POST, produces = "application/json")

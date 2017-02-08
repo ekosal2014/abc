@@ -123,7 +123,7 @@ $(document).ready(function(){
 			url: '../user/add-product', 
 			type: 'post',
 			success:function(data){
-				console.log(data);
+				alert(data['msg'])
 			}
 		})
 	});
