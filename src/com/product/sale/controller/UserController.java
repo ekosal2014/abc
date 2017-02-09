@@ -305,6 +305,13 @@ public class UserController {
 		return checkUserUrlSts(session,request, "email");
 	}
 	
+	@RequestMapping(value="/emaillist", method = RequestMethod.GET)
+	public @ResponseBody String useremaillist(HttpSession session,HttpServletRequest request,ModelMap map) throws JsonGenerationException, JsonMappingException, IOException{
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		//String json = ow.writeValueAsString(CheckEmail.check("pop.gmail.com", "pop3", "ekosal2014@gmail.com", "bmyncvxibaywftpx"));
+		return "";
+	}
+	
 	@RequestMapping(value="/form_upload", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody String userFormUpload(@RequestParam("image[]") MultipartFile[] files,HttpServletRequest requet){
 
