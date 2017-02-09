@@ -83,7 +83,7 @@ public class UserController {
 		return  checkUserUrlSts(session,request, "index");
 	}
 	
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
+	@RequestMapping(value="/Logout", method = RequestMethod.GET)
 	public String userLogOut(HttpSession session, HttpServletRequest request, HttpServletResponse respone){		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if ( auth != null){
@@ -294,10 +294,10 @@ public class UserController {
 		return json;
 	}
 	
-	@RequestMapping(value="/layout", method = RequestMethod.GET)
+	/*@RequestMapping(value="/Layout", method = RequestMethod.GET)
 	public String userMenu(HttpSession session,HttpServletRequest request){		
 		return checkUserUrlSts(session,request, "layout");
-	}
+	}*/
 	
 	@RequestMapping(value="/email", method = RequestMethod.GET)
 	public String useremail(HttpSession session,HttpServletRequest request,ModelMap map){
