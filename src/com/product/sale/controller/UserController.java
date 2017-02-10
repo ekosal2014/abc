@@ -89,6 +89,8 @@ public class UserController {
 		if ( auth != null){
 			new SecurityContextLogoutHandler().logout(request, respone, auth);
 		}
+		
+		
 		for (Object principal : sessionRegistry.getAllPrincipals()){
 			
 			if (principal instanceof User) {
