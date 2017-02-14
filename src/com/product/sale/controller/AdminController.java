@@ -14,8 +14,9 @@ public class AdminController {
 		return new ModelAndView("admin/index");
 	}
 	
+	@RequestMapping(value="/user", method = RequestMethod.GET)
 	public ModelAndView adminUserPage(){
-		return new ModelAndView("/admin/user.jsp");
+		return new ModelAndView("/admin/user");
 	}
 
 }
