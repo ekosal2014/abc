@@ -1,6 +1,7 @@
 package com.product.sale.service.serviceimpl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,7 +64,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<Users> listUser() {
+	public List<Map> listUser() {
 		// TODO Auto-generated method stub
 		return userDao.listUser();
 	}

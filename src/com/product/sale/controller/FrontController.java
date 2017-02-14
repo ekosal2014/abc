@@ -14,9 +14,9 @@ public class FrontController {
 		return new ModelAndView("index");
 	}
 	
-	@RequestMapping(value = "/{user}/{temp}/", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/{user}/{temp}/", method = RequestMethod.GET)
 	public ModelAndView saleNewFolder(@PathVariable("user") String user,@PathVariable("temp") String temp){
 		System.out.println("User = "+ user + " Templete = " + temp);
 		return new ModelAndView("index");
-	}
+	}*/
 }

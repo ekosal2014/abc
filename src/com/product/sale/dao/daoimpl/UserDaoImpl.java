@@ -2,6 +2,7 @@ package com.product.sale.dao.daoimpl;
 
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -137,13 +138,15 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public List<Users> listUser() {
+	public List<Map> listUser() {
 		Session session = null;
 		try{
-			sessionFactory.openSession();
-			session = sessionFactory.getCurrentSession();
-			Query query = sessionFactory.getCurrentSession().createQuery("FROM Users");
-			List<Users> list = query.list();
+			
+			session = sessionFactory.openSession();
+			Query query = session.createQuery("SELECT new Map(u.uId as U_ID,u.uFirstName || ' ' || u.uLastName as Name  "+
+											  ", u.uGender, u.uPhone as U_PHONE, u.uEmail as Email, trim(u.uAddress) as Address )"+
+			                                  " FROM Users u ");
+			List<Map> list = query.list();
 			return list;
 		}catch(Exception e){
 			e.printStackTrace();

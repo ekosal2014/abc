@@ -79,7 +79,7 @@ public class UserController {
 	
 	@RequestMapping(value = {"/","list"}, method = RequestMethod.GET)
 	public String userHomePage(HttpSession session,HttpServletRequest request){
-	   
+		userService.listUser();
 		return  checkUserUrlSts(session,request, "index");
 	}
 	

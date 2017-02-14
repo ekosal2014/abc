@@ -1,3 +1,26 @@
-body{
-	background-color: rgb(233,255,255);
-}
+ .navbar {
+   margin-bottom: 0;
+   border-radius: 0;
+ }
+  .sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 90%;
+    position: absolute;
+  }
+  
+  /* Set black background color, white text and some padding */
+  footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+    width:100%;
+    position:fixed;
+    bottom: 0px;
+    
+  }
+  #container{
+  	  min-height: 400px;
+  	  position: absolute;
+     right: 0px;
+  }

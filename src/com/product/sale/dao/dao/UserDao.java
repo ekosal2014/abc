@@ -1,6 +1,7 @@
 package com.product.sale.dao.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,5 +15,5 @@ public interface UserDao {
 	public Boolean UpdateUserInformation(Users users,HttpServletRequest request);
 	public Boolean DeleteUserInormation(Integer uId);
 	public Boolean UpdateUserImage(Users users,HttpServletRequest request);
-	public List<Users> listUser();
+	public List<Map> listUser();
 }
