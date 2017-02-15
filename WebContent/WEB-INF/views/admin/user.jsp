@@ -14,11 +14,11 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 <link href="${pageContext.request.contextPath }/static/admin/css/content.css" type="text/css" rel="stylesheet">
 
 </head>
-<body>
+<body ng-app="myApp">
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -37,23 +37,38 @@
 	        <li><a href="#">Contact</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	        <li><a href="../user/Logout"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 	      </ul>
 	    </div>
 	  </div>
 	</nav>
-	<div class="container-fluid text-center">    
+	<div class="container-fluid text-center" ng-controller="UserController as ctrl">    
 		  <div class="row content">
 		    <div class="col-sm-2 sidenav">
 		      <p><a href="#">Dashboard</a></p>
-		      <p><a href="../user">User Infor</a></p>
+		      <p><a href="./user">User Infor</a></p>
 		    </div>
 		    <div class="col-sm-10 text-left" id="container"> 
-		      <h1>Welcome</h1>
-		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-		      <hr>
-		      <h3>Test</h3>
-		      <p>Lorem ipsum...</p>
+		      <table class="table">
+		      	  <thead>
+		      	  		<tr>
+		      	  			<th>adfasdf</th>
+		      	  			<th>adfasdf</th>
+		      	  			<th>adfasdf</th>
+		      	  			<th>adfasdf</th>
+		      	  			<th>adfasdf</th>
+		      	  		</tr>
+		      	  </thead>
+		      	  <tbody>
+		      	  		<tr ng-repeat="u in ctrl.users">
+		      	  			<td><span ng-bind="u.Name"></span></td>
+		      	  			<td><span ng-bind="u.PHONE"></span></td>
+		      	  			<td><span ng-bind="u.Gender"></span></td>
+		      	  			<td><span ng-bind="u.Email"></span></td>
+		      	  			<td><span ng-bind="u.Address"></span></td>
+		      	  		</tr>	      	  		
+		      	  </tbody>
+		      </table>
 		    </div>
 		   
 		  </div>
@@ -62,5 +77,9 @@
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="${pageContext.request.contextPath }/static/admin/js/App.js"></script>
+<script src="${pageContext.request.contextPath }/static/admin/js/service/user_service.js"></script>
+<script src="${pageContext.request.contextPath }/static/admin/js/controller/user_controller.js"></script>
 </body>
 </html>

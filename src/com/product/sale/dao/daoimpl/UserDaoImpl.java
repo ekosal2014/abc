@@ -144,7 +144,7 @@ public class UserDaoImpl implements UserDao{
 			
 			session = sessionFactory.openSession();
 			Query query = session.createQuery("SELECT new Map(u.uId as U_ID,u.uFirstName || ' ' || u.uLastName as Name  "+
-											  ", u.uGender, u.uPhone as U_PHONE, u.uEmail as Email, trim(u.uAddress) as Address )"+
+											  ", u.uGender as Gender, u.uPhone as PHONE, u.uEmail as Email, trim(u.uAddress) as Address )"+
 			                                  " FROM Users u ");
 			List<Map> list = query.list();
 			return list;

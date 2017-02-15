@@ -27,7 +27,7 @@ public class AdminRestController {
 			//return new ResponseEntity<List<Users>>(HttpStatus.NO_CONTENT);
 		}	
 		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("data", list);
+		data.put("list", list);
 		return new ResponseEntity<Map<String, Object>>(data, HttpStatus.OK);
 	}
 }

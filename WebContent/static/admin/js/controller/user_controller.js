@@ -1,8 +1,9 @@
 'use strict'
 
-angular.moduel('myApp').controller('UserController',['$scop','UserService',function($scop,Userservice){
-	var selt = this;
-	selt.users = [];
+angular.module('myApp').controller('UserController',['$scope','UserService',function($scope,Userservice){
+	 var self = this;
+	 self.user={U_ID:null,Name:'',Address:'',Email:''};
+	 self.users = [];
 	
 	fetchAllUser();
 	
