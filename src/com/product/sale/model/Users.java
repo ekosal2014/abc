@@ -8,9 +8,18 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@NamedNativeQueries({
+	@NamedNativeQuery(
+			name = "storeProcedure",
+			query = " CALL getlit(:abc)",
+			resultClass = Users.class
+	)
+})
 
 @Entity
 @Table(name="tbl_User")

@@ -47,6 +47,8 @@
 		    <div class="col-sm-2 sidenav">
 		      <p><a href="#">Dashboard</a></p>
 		      <p><a href="./user">User Infor</a></p>
+		      <p><a href="./categetoryinfo">Category Infor</a></p>
+		      <p><a href="./productinfo">Category Infor</a></p>
 		    </div>
 		    <div class="col-sm-10 text-left" id="container"> 
 		      <h1>Welcome</h1>

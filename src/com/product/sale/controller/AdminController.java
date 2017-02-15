@@ -18,5 +18,15 @@ public class AdminController {
 	public ModelAndView adminUserPage(){
 		return new ModelAndView("/admin/user");
 	}
+	
+	@RequestMapping(value="/categetoryinfo", method = RequestMethod.GET)
+	public ModelAndView adminCategoryPag(){
+		return new ModelAndView("/admin/user");
+	}
+	
+	@RequestMapping(value="/productinfo", method = RequestMethod.GET)
+	public ModelAndView adminProductPag(){
+		return new ModelAndView("/admin/user");
+	}
 
 }
