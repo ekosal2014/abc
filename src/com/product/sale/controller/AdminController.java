@@ -21,12 +21,12 @@ public class AdminController {
 	
 	@RequestMapping(value="/categetoryinfo", method = RequestMethod.GET)
 	public ModelAndView adminCategoryPag(){
-		return new ModelAndView("/admin/user");
+		return new ModelAndView("/admin/category");
 	}
 	
 	@RequestMapping(value="/productinfo", method = RequestMethod.GET)
 	public ModelAndView adminProductPag(){
-		return new ModelAndView("/admin/user");
+		return new ModelAndView("/admin/product");
 	}
 
 }

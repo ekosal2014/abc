@@ -24,3 +24,10 @@
   	  position: absolute;
      right: 0px;
   }
+  .table>tbody>tr>td, .table>tbody>tr>th {
+    padding: 5px;
+    line-height: 1.42857143;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    vertical-align:middle;
+}
