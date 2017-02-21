@@ -40,3 +40,4 @@ angular.module('myApp').controller('CategoryController',['$scope','CategoryServi
 	}
 	
 }]);
+
