@@ -3,7 +3,8 @@ angular.module('myApp').factory('UserService',['$http','$q', function($http,$q){
 	var REST_SERVICE_URI = 'http://localhost:8080/ProductSale/admin/';
 	
 	   var factory = {
-	        fetchAllUser: fetchAllUser
+	        fetchAllUser: fetchAllUser,
+	        popUpAddMenu: popUpAddMenu
 	    };
 	
 	    return factory;
@@ -21,7 +22,20 @@ angular.module('myApp').factory('UserService',['$http','$q', function($http,$q){
 	            }
 	        );
 	        return deferred.promise;
-	        asdfasdf
+	    }
+	    
+	    function popUpAddMenu(){
+	    	var deferred = $q.defer();
+	    	$http.get(REST_SERVICE_URI+'categorylist/')
+	    	     .then(
+	    	    		 function (response){
+	    	    			 deferred.resolve(respone.data.list);
+	    	    		 },
+	    	    		 function (errResponse){
+	    	    			 deferred.reject(errResponse);
+	    	    		 }	    	    		 
+	    	     );
+	    	return deferred.promise;
 	    }
    
 }])

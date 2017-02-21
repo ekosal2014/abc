@@ -16,7 +16,20 @@ angular.module('myApp').controller('UserController',['$scope','UserService',func
 			function(errResponse){
 				 console.error('Error while fetching Users');
 			}
-		);
-		
+		);	
 	}
+	
+	function popUpAddMenu(){
+		Userservice.popUpAddMenu()
+		.then(
+			 function (d){
+				 self.users=d;
+				 $('#myModal').css('display','block');
+			 },
+			 function(errResponse){
+				 console.error('Error while fetching Users');
+			 }
+		);
+	}
+	
 }]);

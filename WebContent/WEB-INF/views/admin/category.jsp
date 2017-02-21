@@ -79,7 +79,7 @@
 	    </div>
 	  </div>
 	</nav>
-	<div class="container-fluid text-center" ng-controller="UserController as ctrl">    
+	<div class="container-fluid text-center" ng-controller="CategoryController as ctrl">    
 		  <div class="row content">
 		    <div class="col-sm-2 sidenav">
 		      <p><a href="#">Dashboard</a></p>
@@ -88,6 +88,10 @@
 		      <p><a href="./productinfo">Category Infor</a></p>
 		    </div>
 		    <div class="col-sm-10 text-left" id="container"> 
+		      <div class="content-header blue">lkdaa</div>
+				<div class="content-tool">
+					<a href="javascript:" ng-click="ctrl.popUpAddCategory()" class="btn btn-blue btn-big">Add New</a>
+				</div>
 		     <table class="table" id="tbl-result">
 	                      <thead>
 	                        <tr>
@@ -97,122 +101,48 @@
 	                        </tr>
 	                      </thead>
 	                      <tbody>
-	                        	                      
-	                        
-			                   
-		                   			 
-			                   		<tr>
-			                          <th scope="row" style="width:10%">1</th>
-			                          <td style="width:70%">asdfasd<input type="hidden" value="asdfasd" class="txt-name"></td>
-			                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="44">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="44">Delete</a></td>
+			                   		<tr ng-repeat="u in ctrl.Categorys">
+			                          <td scope="row" style="width:10%">{{u.MENU_ID}}</td>
+			                          <td style="width:70%">{{u.MENU_NM}}<input type="hidden" value="asdfasd" class="txt-name"></td>
+			                          <td><a href="javascript:" ng-click="ctrl.popUpEditCategroy(1)" class="btn btn-small btn-yellow btn-edit" data-id="44">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="44">Delete</a></td>
 			                        </tr>
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                					          
-				                   							               		   
-				               
-			                   
-		                   			 
-			                   		<tr>
-			                          <th scope="row" style="width:10%">2</th>
-			                          <td style="width:70%">sadfasdf<input type="hidden" value="sadfasdf" class="txt-name"></td>
-			                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="45">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="45">Delete</a></td>
-			                        </tr>
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                					          
-				                   							               		   
-				               
-			                   
-		                   			 
-			                   		<tr>
-			                          <th scope="row" style="width:10%">3</th>
-			                          <td style="width:70%">asasdfa<input type="hidden" value="asasdfa" class="txt-name"></td>
-			                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="46">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="46">Delete</a></td>
-			                        </tr>
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                					          
-				                   							               		   
-				               
-			                   
-		                   			 
-			                   		<tr>
-			                          <th scope="row" style="width:10%">4</th>
-			                          <td style="width:70%">sdfsdf<input type="hidden" value="sdfsdf" class="txt-name"></td>
-			                          <td><a href="javascript:" class="btn btn-small btn-yellow btn-edit" data-id="47">Edit</a> | <a href="javascript:" class="btn btn-small btn-red btn-delete" data-id="47">Delete</a></td>
-			                        </tr>
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                
-					                  	
-					                					          
-				                   							               		   
-				               
-			                   							               		   
-				               
-			                   							               		   
-				               
-			                   							               		   
-				               
-			                   							               		   
-				               		                        
+			                   				                                    
 	                      </tbody>
 	                    </table>
+	                    
+	                    <!-- The Modal -->
+						<div id="myModal" class="modal">						
+						  <!-- Modal content -->
+						  <div class="modal-content" style="width:800px;">
+						    <div class="modal-header">
+						      <span class="close">&times;</span>
+						      <h3>Modal Header</h3>
+						    </div>
+						    <div class="modal-body">    		
+						      	  <nav>
+								    <select style="position: relative;">
+								            <option value="0">Main Category</option>
+								    		<option ng-repeat="u in ctrl.Categorys" value="{u.MENU_ID}}">{{u.MENU_NM}}</option>
+								    </select>
+								</nav>    
+							
+						    </div>
+						      <div class="modal-body">    		
+						      	
+								<nav>								 
+								    <input type="text"/>
+								</nav>    
+								
+						    </div>
+						   <div class="modal-body">    		  
+								<nav>								 
+								    <input type="button" value="Save"/>
+								</nav>    
+						    </div>
+						    <div class="modal-footer">
+						      <h3>Modal Footer</h3>
+						    </div>
+						  </div>
 		    </div>
 		   
 		  </div>
@@ -221,9 +151,11 @@
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 </footer>
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="${pageContext.request.contextPath }/static/admin/js/App.js"></script>
-<script src="${pageContext.request.contextPath }/static/admin/js/service/user_service.js"></script>
-<script src="${pageContext.request.contextPath }/static/admin/js/controller/user_controller.js"></script>
+<script src="${pageContext.request.contextPath }/static/admin/js/service/category_service.js"></script>
+<script src="${pageContext.request.contextPath }/static/admin/js/controller/category_controller.js"></script>
+
 </body>
 </html>
