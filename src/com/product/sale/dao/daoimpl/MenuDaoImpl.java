@@ -2,6 +2,7 @@ package com.product.sale.dao.daoimpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -207,6 +208,30 @@ public class MenuDaoImpl implements MenuDao{
 		msg.setCode("0000");
 		msg.setMsg("Update Invalid!");
 		return msg;
+	}
+
+	@Override
+	public List<Map> ListMenu() {
+		// TODO Auto-generated method stub
+		Session session = null;
+		try{
+			session = sessionFactory.openSession();
+			session.getTransaction().begin();
+			//Query query = session.createQuery("FROM MenuUser where");				
+			@SuppressWarnings("unchecked")
+			Query query = session.createQuery(" SELECT new Map(m.menuId as MENU_ID,m.menuName as MENU_NM,m.menuParents as MENU_PARENT ) FROM Menu m "
+					                             + " inner join m.user u "
+					                             + " where u.uTxt =:sts");
+			 query.setParameter("sts", "1");
+			List<Map> list = query.list();
+			session.getTransaction().commit();
+			return list;
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}	
+		return null;
 	}
 
 }

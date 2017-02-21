@@ -3,6 +3,7 @@ package com.product.sale.service.serviceimpl;
 import java.util.ArrayList;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
@@ -57,6 +58,12 @@ public class MenuServiceImpl implements MenuService{
 	public Message MenuUpdateName(Menu menu, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		return menuDao.MenuUpdateName(menu, request);
+	}
+
+	@Override
+	public List<Map> ListMenu() {
+		// TODO Auto-generated method stub
+		return menuDao.ListMenu();
 	}
 
 }
