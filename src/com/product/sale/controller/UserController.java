@@ -50,7 +50,6 @@ import com.product.sale.service.service.CategoryService;
 import com.product.sale.service.service.MenuService;
 import com.product.sale.service.service.ProductService;
 import com.product.sale.service.service.UserService;
-import com.product.sale.utils.CheckEmail;
 import com.product.sale.utils.Pagination;
 
 @Controller
@@ -301,11 +300,7 @@ public class UserController {
 		return checkUserUrlSts(session,request, "layout");
 	}*/
 	
-	@RequestMapping(value="/email", method = RequestMethod.GET)
-	public String useremail(HttpSession session,HttpServletRequest request,ModelMap map){
-		map.put("email", CheckEmail.check("pop.gmail.com", "pop3", "ekosal2014@gmail.com", "bmyncvxibaywftpx"));
-		return checkUserUrlSts(session,request, "email");
-	}
+	
 	
 	@RequestMapping(value="/emaillist", method = RequestMethod.GET)
 	public @ResponseBody String useremaillist(HttpSession session,HttpServletRequest request,ModelMap map) throws JsonGenerationException, JsonMappingException, IOException{
